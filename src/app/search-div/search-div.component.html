@@ -1,0 +1,116 @@
+<div class="container" id="search-div">
+  <div class="jumbotron" id="search_div_jumbotron">
+      <form id="search_form" (ngSubmit)="onSubmit()" #searchForm=ngForm>
+        <h2>Product Search</h2>
+
+        <!-- keyword -->
+        <div class="form-group row">
+          <div class="col-sm-3">Keyword</div>
+          <!-- <label for="keyword" class="col-sm-3 col-form-label">Keyword</label> -->
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Enter Product Name (eg. iPhone 8)" required [(ngModel)]="form.keyword">
+          </div>
+        </div>
+        <!-- category -->
+        <div class="form-group row">
+          <div class="col-sm-3">Category</div>
+          <!-- <label for="category" class="col-sm-3 col-form-label">Category</label> -->
+          <div class="col-sm-3">
+            <!-- <select class="custom-select" name="category" id="category" [(ngModel)]="form.category" #category="ngModel">
+              <option *ngFor="let type of searchTypes" [value]="type|capToVar">{{type}}</option> -->
+            <select class="form-control" name="category" id="category">
+              <option value = "" selected>All Categories</option>
+              <option value = "art">Art</option>
+              <option value = "baby">Baby</option>
+              <option value = "books">Books</option>
+              <option value = "clothing_shoes_accessories">Clothing, Shoes & Accessories </option>
+              <option value = "computers_tablets_networking">Computers/Tablets & Networking</option>
+              <option value = "health_beauty">Health & Beauty</option>
+              <option value = "music">Music</option>
+              <option value = "video_games_consoles">Video Games & Consoles</option>
+            </select>
+          </div>
+        </div>
+        <!-- condition -->
+        <div class="form-group row">
+          <div class="col-sm-3">Condition</div>
+          <!-- <label for="condition" class="col-sm-3 col-form-label">Condition</label> -->
+          <div class="col-sm-9">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="condition_new">
+              <label class="form-check-label" for="new">
+                New
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="condition_used">
+              <label class="form-check-label" for="used">
+                Used
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="condition_Unspecified">
+              <label class="form-check-label" for="new">
+                Unspecified
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- shipping options -->
+        <div class="form-group row">
+          <div class="col-sm-3">Shipping Options</div>
+          <!-- <label for="shipping_options" class="col-sm-2 col-form-label">Shipping Options</label> -->
+          <div class="col-sm-9">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="shipping_local_pickup">
+              <label class="form-check-label" for="local_pickup">
+                Local Pickup
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="shipping_free_shipping">
+              <label class="form-check-label" for="free_shipping">
+                Free Shipping
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- distance -->
+        <div class="form-group row">
+          <div class="col-sm-3">Distance (Miles)</div>
+          <!-- <label for="miles_from" class="col-sm-3 col-form-label">Distance (Miles)</label> -->
+          <div class="col-sm-3">
+            <input type="text" class="form-control" id="distance" placeholder="10" value="10">
+          </div>
+        </div>
+        <!-- from -->
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-3 pt-0">From</legend>
+            <div class="col-sm-6">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="zipcode" id="radio_here" value="here" checked>
+                <label class="form-check-label" for="label_here">
+                  Current Location
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="zipcode" id="radio_zipcode" value="custom">
+                <label class="form-check-label" for="label_zipcode">
+                  Other. Please specify zip code:
+                </label>
+              </div>
+              <input type="text" class="form-control" id="zipcode_input">
+            </div>
+          </div>
+        </fieldset>
+        <!-- buttons -->
+        <div class="form-group row" id="buttons">
+          <div class="col-sm-9">
+            <button type="submit" class="btn btn-primary" id="button_search"><i class="material-icons md-48">search</i>Search</button>
+            <button type="reset" class="btn btn-outline-secondary" id="button_clear"><i class="material-icons md-48">clear_all</i>Clear</button>
+          </div>
+        </div>
+      </form>
+  </div>
+</div>
