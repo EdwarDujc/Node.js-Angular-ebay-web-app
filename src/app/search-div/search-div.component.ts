@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
-import {SearchForm} from "./search_form";
-import { NgForm } from "@angular/forms/src/directives/ng_form";
-import {SearchService} from "../search.service";
+import {SearchForm} from './search_form';
+import { NgForm } from '@angular/forms/src/directives/ng_form';
+import {SearchService} from '../search.service';
 
 @Component({
   selector: 'app-search-div',
@@ -9,53 +9,57 @@ import {SearchService} from "../search.service";
   styleUrls: ['./search-div.component.css']
 })
 export class SearchDivComponent implements OnInit {
+
+  constructor(private myService: SearchService, cdRef: ChangeDetectorRef) {
+    // this.category = "All Categories";
+  }
   userZipcode = '';
-  gotZipcode: boolean = false;
-  category = "all";
-  condition_new: boolean = false;
-  condition_used: boolean = false;
-  condition_unspecified: boolean = false;
-  shipping_local: boolean = false;
-  shipping_free: boolean = false;
+  hereZipcode = '';
+  gotZipcode = false;
+  category = 'all';
+  conditionNew = false;
+  conditionUsed = false;
+  conditionUnspecified = false;
+  shippingLocal = false;
+  shippingFree = false;
   form = SearchForm;
 
-  constructor(private myService: SearchService, cdRef: ChangeDetectorRef) { }
+  searchTypes = [
+    'All Categories',
+    'Baby',
+    'Clothing, Shoes & Accessories',
+    'Computers/Tablets & Networking',
+    'Health & Beauty',
+    'Music',
+    'Video Games & Consoles'
+  ];
 
-  getHereZipcode(){
-    this.myService.getHereZipcode().subscribe(data =>{
-      this.userZipcode = data["zip"];
-      this.form.userZipcode = this.userZipcode;
+  getHereZipcode() {
+    this.myService.getHereZipcode().subscribe(data => {
+      this.hereZipcode = data["zip"];
+      this.form.hereZipcode = this.hereZipcode;
       this.gotZipcode = true;
-      console.log(this.userZipcode)
-    })
+      // console.log('this.hereZipcode: ', this.hereZipcode);
+    });
   }
 
   ngOnInit() {
     this.getHereZipcode();
   }
 
-  onSubmit(){
+  onSubmit() {
     this.myService.search(this.form);
   }
 
-  clear(){
+  clear() {
     this.myService.clear();
-    this.category = "All Categories";
-    this.condition_new = false;
-    this.condition_used = false;
-    this.condition_unspecified = false;
-    this.shipping_local = false;
-    this.shipping_free = false;
-    this.form.isUserInput = false;
+    this.category = 'all';
+    this.conditionNew = false;
+    this.conditionUsed = false;
+    this.conditionUnspecified = false;
+    this.shippingLocal = false;
+    this.shippingFree = false;
+    this.form.zipcodeCustom = false;
+    this.userZipcode = '';
   }
-
-  searchTypes = [
-    "All Categories",
-    "Baby",
-    "Clothing, Shoes & Accessories",
-    "Computers/Tablets & Networking",
-    "Health & Beauty",
-    "Music",
-    "Video Games & Consoles"
-  ];
 }

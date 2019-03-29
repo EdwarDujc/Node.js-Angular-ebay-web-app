@@ -5,102 +5,98 @@
 
         <!-- keyword -->
         <div class="form-group row">
-          <div class="col-sm-3">Keyword</div>
-          <!-- <label for="keyword" class="col-sm-3 col-form-label">Keyword</label> -->
+           <label for="keyword" class="col-sm-3 col-form-label">Keyword<span class="required">*</span></label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Enter Product Name (eg. iPhone 8)" required [(ngModel)]="form.keyword">
+            <input [ngClass]="{'form-control': true, 'is-invalid': keyword.invalid && (keyword.dirty || keyword.touched)}" type="text"
+                   name="keyword" id="keyword" placeholder="Enter Product Name (eg. iPhone 8)" required noWhitespace [(ngModel)]="form.keyword" #keyword="ngModel">
+            <div class="invalid-feedback">Please enter a keyword.</div>
           </div>
         </div>
+
         <!-- category -->
         <div class="form-group row">
           <div class="col-sm-3">Category</div>
           <!-- <label for="category" class="col-sm-3 col-form-label">Category</label> -->
           <div class="col-sm-3">
-            <!-- <select class="custom-select" name="category" id="category" [(ngModel)]="form.category" #category="ngModel">
-              <option *ngFor="let type of searchTypes" [value]="type|capToVar">{{type}}</option> -->
-            <select class="form-control" name="category" id="category">
-              <option value = "" selected>All Categories</option>
-              <option value = "art">Art</option>
-              <option value = "baby">Baby</option>
-              <option value = "books">Books</option>
-              <option value = "clothing_shoes_accessories">Clothing, Shoes & Accessories </option>
-              <option value = "computers_tablets_networking">Computers/Tablets & Networking</option>
-              <option value = "health_beauty">Health & Beauty</option>
-              <option value = "music">Music</option>
-              <option value = "video_games_consoles">Video Games & Consoles</option>
+            <select class="custom-select" name="category" id="category" [(ngModel)]="form.category" #category="ngModel">
+              <option *ngFor="let type of searchTypes" [value]="type|capToVar">{{type}}</option>
             </select>
           </div>
         </div>
+
         <!-- condition -->
         <div class="form-group row">
           <div class="col-sm-3">Condition</div>
           <!-- <label for="condition" class="col-sm-3 col-form-label">Condition</label> -->
           <div class="col-sm-9">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="condition_new">
+              <input class="form-check-input" type="checkbox" name="condition_new" id="condition_new" [(ngModel)]="form.condition_new">
               <label class="form-check-label" for="new">
                 New
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="condition_used">
+              <input class="form-check-input" type="checkbox" name="condition_used" id="condition_used" [(ngModel)]="form.condition_used">
               <label class="form-check-label" for="used">
                 Used
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="condition_Unspecified">
+              <input class="form-check-input" type="checkbox" name="condition_unspecified" id="condition_unspecified" [(ngModel)]="form.condition_unspecified">
               <label class="form-check-label" for="new">
                 Unspecified
               </label>
             </div>
           </div>
         </div>
+
         <!-- shipping options -->
         <div class="form-group row">
           <div class="col-sm-3">Shipping Options</div>
           <!-- <label for="shipping_options" class="col-sm-2 col-form-label">Shipping Options</label> -->
           <div class="col-sm-9">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="shipping_local_pickup">
+              <input class="form-check-input" type="checkbox" name="shipping_local" id="shipping_local" [(ngModel)]="form.shipping_local">
               <label class="form-check-label" for="local_pickup">
                 Local Pickup
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="shipping_free_shipping">
+              <input class="form-check-input" type="checkbox" name="shipping_free" id="shipping_free" [(ngModel)]="form.shipping_free">
               <label class="form-check-label" for="free_shipping">
                 Free Shipping
               </label>
             </div>
           </div>
         </div>
+
         <!-- distance -->
         <div class="form-group row">
           <div class="col-sm-3">Distance (Miles)</div>
           <!-- <label for="miles_from" class="col-sm-3 col-form-label">Distance (Miles)</label> -->
           <div class="col-sm-3">
-            <input type="text" class="form-control" id="distance" placeholder="10" value="10">
+            <input type="text" class="form-control" id="distance" placeholder="10" value="10" name="distance" [(ngModel)]="form.distance">
           </div>
         </div>
+
         <!-- from -->
         <fieldset class="form-group">
           <div class="row">
-            <legend class="col-form-label col-sm-3 pt-0">From</legend>
+            <legend class="col-form-label col-sm-3 pt-0">From<span class="required">*</span></legend>
             <div class="col-sm-6">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="zipcode" id="radio_here" value="here" checked>
+                <input class="form-check-input" type="radio" name="zipcode_custom" id="radio_here" value="here" checked [value]="false" [(ngModel)]="form.zipcodeCustom">
                 <label class="form-check-label" for="label_here">
                   Current Location
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="zipcode" id="radio_zipcode" value="custom">
+                <input class="form-check-input" type="radio" name="zipcode_custom" id="radio_zipcode" value="custom" [value]="true" [(ngModel)]="form.zipcodeCustom">
                 <label class="form-check-label" for="label_zipcode">
                   Other. Please specify zip code:
                 </label>
               </div>
-              <input type="text" class="form-control" id="zipcode_input">
+              <input type="text" class="form-control" id="user_zipcode" name="user_zipcode" [(ngModel)]="form.userZipcode">
             </div>
           </div>
         </fieldset>

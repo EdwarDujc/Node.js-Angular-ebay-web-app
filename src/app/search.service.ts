@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +10,27 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   getHereZipcode() {
-    const url = "http://ip-api.com/json";
-    return this.http.get(url)
+    const url = 'http://ip-api.com/json';
+    return this.http.get(url);
   }
 
-  search(form){
-    console.log("submit clicked")
-    let zipcode = form.userZipcode;
-    let params = new HttpParams()
-      .set("keyword", form.keyword)
-      .set("category", form.category || "All Categories")
-      .set("distance", form.distance || "10")
-      .set("isUserInput", form.isUserInput || false)
-      .set("zipcode", zipcode);
+  search(form) {
+    console.log('submit clicked');
+    const zipcode = form.userZipcode;
+    const params = new HttpParams()
+      .set('keyword', form.keyword)
+      .set('category', form.category || 'all_categories')
+      .set('condition_new', form.condition_new || false)
+      .set('condition_used', form.condition_used || false)
+      .set('condition_unspecified', form.condition_unspecified || false)
+      .set('shipping_local', form.shipping_local || false)
+      .set('shipping_free', form.shipping_free || false)
+      .set('distance', form.distance || '10')
+      .set('zipcodeCustom', form.zipcodeCustom || false)
+      .set('hereZipcode', form.hereZipcode)
+      .set('userZipcode', form.userZipcode);
 
-    let response = this.http.get("http://localhost:4200/", { params: params });
+    const response = this.http.get('http://localhost:8000/', { params });
 
     response.subscribe(
       data => {

@@ -8,11 +8,15 @@ import { SearchDivComponent } from './search-div/search-div.component';
 import { ResultsDivComponent } from './results-div/results-div.component';
 import { SearchService } from "./search.service";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { CapToVarPipe } from "./pipes/cap-to-var.pipe";
+
 @NgModule({
   declarations: [
     AppComponent,
     SearchDivComponent,
-    ResultsDivComponent
+    ResultsDivComponent,
+    CapToVarPipe,
+
   ],
   imports: [
     BrowserModule,

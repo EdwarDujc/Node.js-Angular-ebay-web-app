@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-backend",
+  "version": "1.0.0",
+  "description": "A nodejs backend for homework 8",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Jincheng Du",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
+}
