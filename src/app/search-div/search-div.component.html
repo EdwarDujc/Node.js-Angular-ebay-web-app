@@ -8,7 +8,7 @@
            <label for="keyword" class="col-sm-3 col-form-label">Keyword<span class="required">*</span></label>
           <div class="col-sm-6">
             <input [ngClass]="{'form-control': true, 'is-invalid': keyword.invalid && (keyword.dirty || keyword.touched)}" type="text"
-                   name="keyword" id="keyword" placeholder="Enter Product Name (eg. iPhone 8)" required noWhitespace [(ngModel)]="form.keyword" #keyword="ngModel">
+                   name="keyword" id="keyword" placeholder="Enter Product Name (eg. iPhone 8)" required [(ngModel)]="form.keyword" #keyword="ngModel">
             <div class="invalid-feedback">Please enter a keyword.</div>
           </div>
         </div>
@@ -96,7 +96,11 @@
                   Other. Please specify zip code:
                 </label>
               </div>
-              <input type="text" class="form-control" id="user_zipcode" name="user_zipcode" [(ngModel)]="form.userZipcode">
+<!--              <input type="text" class="form-control" id="user_zipcode" name="user_zipcode" [(ngModel)]="form.userZipcode">-->
+                <input [ngClass]="{'form-control': true, 'is-invalid': location.invalid && (location.dirty || location.touched)}" type="text"
+                       name="loc-input" id="loc-input" required [disabled]="!form.zipcodeCustom"  [(ngModel)]="form.userZipcode"
+                       #location="ngModel">
+                <div class="invalid-feedback">Please enter a zip code</div>
             </div>
           </div>
         </fieldset>

@@ -43,6 +43,10 @@ export class SearchDivComponent implements OnInit {
     });
   }
 
+  getAddressOnChange(event, location) {
+    this.form.userZipcode = (document.getElementById('loc-input') as HTMLInputElement).value;
+  }
+
   ngOnInit() {
     this.getHereZipcode();
   }
