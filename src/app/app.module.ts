@@ -11,6 +11,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CapToVarPipe } from './pipes/cap-to-var.pipe';
 import { WhitespaceDirective } from './directives/whitespace.directive';
 import { ZipcodeDirective } from './directives/zipcode.directive';
+import { ResultsTableComponent } from './results-table/results-table.component';
+import { DetailsTableComponent } from './details-table/details-table.component';
+import { FavoriteListComponent } from './favorite-list/favorite-list.component';
+import { ProcessingBarComponent } from './processing-bar/processing-bar.component';
 
 
 @NgModule({
@@ -20,7 +24,11 @@ import { ZipcodeDirective } from './directives/zipcode.directive';
     ResultsDivComponent,
     CapToVarPipe,
     WhitespaceDirective,
-    ZipcodeDirective
+    ZipcodeDirective,
+    ResultsTableComponent,
+    DetailsTableComponent,
+    FavoriteListComponent,
+    ProcessingBarComponent
   ],
   imports: [
     BrowserModule,
