@@ -30,11 +30,12 @@ export class SearchService {
       .set('hereZipcode', form.hereZipcode)
       .set('userZipcode', form.userZipcode);
 
-    const response = this.http.get('http://localhost:8000/', { params });
+    const response = this.http.get('http://localhost:8081/process_get', { params });
 
     response.subscribe(
       data => {
         this.jsonData = data;
+        console.log(data);
       },
       err => {
         console.log(err);

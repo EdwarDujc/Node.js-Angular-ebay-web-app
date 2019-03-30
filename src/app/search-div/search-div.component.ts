@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@ang
 import {SearchForm} from './search_form';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import {SearchService} from '../search.service';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search-div',
@@ -10,8 +11,7 @@ import {SearchService} from '../search.service';
 })
 export class SearchDivComponent implements OnInit {
 
-  constructor(private myService: SearchService, cdRef: ChangeDetectorRef) {
-    // this.category = "All Categories";
+  constructor(private myService: SearchService, cdRef: ChangeDetectorRef, private formBuilder: FormBuilder) {
   }
   userZipcode = '';
   hereZipcode = '';
@@ -26,7 +26,9 @@ export class SearchDivComponent implements OnInit {
 
   searchTypes = [
     'All Categories',
+    'Art',
     'Baby',
+    'Books',
     'Clothing, Shoes & Accessories',
     'Computers/Tablets & Networking',
     'Health & Beauty',

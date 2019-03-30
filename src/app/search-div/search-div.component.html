@@ -98,7 +98,7 @@
               </div>
 <!--              <input type="text" class="form-control" id="user_zipcode" name="user_zipcode" [(ngModel)]="form.userZipcode">-->
                 <input [ngClass]="{'form-control': true, 'is-invalid': location.invalid && (location.dirty || location.touched)}" type="text"
-                       name="loc-input" id="loc-input" required [disabled]="!form.zipcodeCustom"  [(ngModel)]="form.userZipcode"
+                       id="user_zipcode" name="user_zipcode" required [disabled]="!form.zipcodeCustom"  [(ngModel)]="form.userZipcode"
                        #location="ngModel">
                 <div class="invalid-feedback">Please enter a zip code</div>
             </div>
@@ -107,7 +107,7 @@
         <!-- buttons -->
         <div class="form-group row" id="buttons">
           <div class="col-sm-9">
-            <button type="submit" class="btn btn-primary" id="button_search"><i class="material-icons md-48">search</i>Search</button>
+            <button type="submit" class="btn btn-primary" id="button_search" [disabled]="!gotZipcode || searchForm.invalid"><i class="material-icons md-48">search</i>Search</button>
             <button type="reset" class="btn btn-outline-secondary" id="button_clear"><i class="material-icons md-48">clear_all</i>Clear</button>
           </div>
         </div>
