@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import {SearchForm} from './search_form';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
-import {SearchService} from '../search.service';
+import {SearchService} from '../services/search.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
