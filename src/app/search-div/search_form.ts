@@ -10,4 +10,4 @@ export const SearchForm = {
     zipcodeCustom: false,
     userZipcode: '',
     hereZipcode: ''
-}
+};

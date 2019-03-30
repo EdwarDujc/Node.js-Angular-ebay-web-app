@@ -6,9 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchDivComponent } from './search-div/search-div.component';
 import { ResultsDivComponent } from './results-div/results-div.component';
-import { SearchService } from "./search.service";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { CapToVarPipe } from "./pipes/cap-to-var.pipe";
+import { SearchService } from './search.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CapToVarPipe } from './pipes/cap-to-var.pipe';
+import { WhitespaceDirective } from './directives/whitespace.directive';
+import { ZipcodeDirective } from './directives/zipcode.directive';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +19,8 @@ import { CapToVarPipe } from "./pipes/cap-to-var.pipe";
     SearchDivComponent,
     ResultsDivComponent,
     CapToVarPipe,
-
+    WhitespaceDirective,
+    ZipcodeDirective
   ],
   imports: [
     BrowserModule,
