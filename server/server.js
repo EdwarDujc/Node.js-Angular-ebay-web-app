@@ -91,7 +91,7 @@ app.get("/process_get", function(req, res) {
     //seller info
     url += "&outputSelector(0)=SellerInfo";
     //store info
-    url += "outputSelector(1)=StoreInfo";
+    url += "&outputSelector(1)=StoreInfo";
 
     console.log(url);
 

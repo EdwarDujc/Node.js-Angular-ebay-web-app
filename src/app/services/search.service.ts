@@ -1,11 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
   private jsonData: any;
+
+  private subIsClear = new Subject();
+  isClear = this.subIsClear.asObservable();
+
+  private subIsDataGet = new Subject();
+  isDataget = this.subIsDataGet.asObservable();
+
+  private subResultJson = new Subject();
+  resultJson = this.subResultJson.asObservable();
+
+  private searchResults: any;
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +27,7 @@ export class SearchService {
   }
 
   search(form) {
-    console.log('submit clicked');
+    // console.log('submit clicked');
     const zipcode = form.userZipcode;
     const params = new HttpParams()
       .set('keyword', form.keyword)
@@ -35,7 +47,10 @@ export class SearchService {
     response.subscribe(
       data => {
         this.jsonData = data;
-        console.log(data);
+        // console.log(data);
+        this.subIsDataGet.next(true);
+        this.subResultJson.next(this.jsonData);
+        this.searchResults = data["findItemsAdvancedResponse"];
       },
       err => {
         console.log(err);
@@ -43,8 +58,15 @@ export class SearchService {
     );
   }
 
-  clear() {
+  loadSearchResult() {
+    this.subResultJson.next(this.jsonData);
+  }
 
+  clear() {
+    // console.log('clear clicked in search.service.ts');
+    this.subResultJson.next('clear');
+    this.jsonData = undefined;
+    this.subIsClear.next(true);
   }
 
 }

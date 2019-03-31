@@ -109,7 +109,7 @@
         <div class="form-group row" id="buttons">
           <div class="col-sm-9">
             <button type="submit" class="btn btn-primary" id="button_search" [disabled]="!gotZipcode || searchForm.invalid"><i class="material-icons md-48">search</i>Search</button>
-            <button type="reset" class="btn btn-outline-secondary" id="button_clear"><i class="material-icons md-48">clear_all</i>Clear</button>
+            <button type="reset" class="btn btn-outline-secondary" id="button_clear" (click)="clear()"><i class="material-icons md-48">clear_all</i>Clear</button>
           </div>
         </div>
       </form>

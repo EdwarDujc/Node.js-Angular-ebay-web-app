@@ -47,6 +47,7 @@ export class SearchDivComponent implements OnInit {
 
   ngOnInit() {
     this.getHereZipcode();
+    this.form.keyword = 'iphone';
   }
 
   onSubmit() {
@@ -54,6 +55,7 @@ export class SearchDivComponent implements OnInit {
   }
 
   clear() {
+    // console.log('clear clicked in search-div.component.ts');
     this.myService.clear();
     this.category = 'all';
     this.conditionNew = false;
