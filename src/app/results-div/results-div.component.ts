@@ -25,8 +25,8 @@ export class ResultsDivComponent implements OnInit {
   clear = false;
   isShowResult = true;
   isShowFavorite = false;
-  resultShowClass = 'btn btn-primary';
-  favoriteShowClass = 'btn btn-outline-primary';
+  resultShowClass = 'btn btn-dark';
+  favoriteShowClass = 'btn btn-light';
   active: any;
 
   constructor(private sService: SearchService, private dService: DetailsService) {
@@ -46,16 +46,16 @@ export class ResultsDivComponent implements OnInit {
     this.clear = false;
     this.isShowFavorite = false;
     this.isShowResult = true;
-    this.resultShowClass = 'btn btn-primary';
-    this.favoriteShowClass = 'btn btn-outline-primary';
+    this.resultShowClass = 'btn btn-dark';
+    this.favoriteShowClass = 'btn btn-light';
   }
 
   showFavorite() {
     this.clear = false;
     this.isShowResult = false;
     this.isShowFavorite = true;
-    this.resultShowClass = 'btn btn-outline-primary';
-    this.favoriteShowClass = 'btn btn-primary';
+    this.resultShowClass = 'btn btn-light';
+    this.favoriteShowClass = 'btn btn-dark';
   }
 
   slideRight(panel) {
