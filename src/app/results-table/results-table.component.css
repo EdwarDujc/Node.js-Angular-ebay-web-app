@@ -1,0 +1,17 @@
+img {
+  width: 120px;
+  height: 120px;
+}
+
+#results-div-table {
+  text-align: left;
+}
+
+.pagination {
+  text-align: center;
+}
+
+.material-icons {
+  display: inline-flex;
+  vertical-align: middle;
+}

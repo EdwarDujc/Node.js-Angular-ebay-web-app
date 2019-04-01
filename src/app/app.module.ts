@@ -13,16 +13,17 @@ import { ResultsDivComponent } from './results-div/results-div.component';
 import { ResultsTableComponent } from './results-table/results-table.component';
 import { DetailsTableComponent } from './details-table/details-table.component';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
-import { ProcessingBarComponent } from './processing-bar/processing-bar.component';
 // service
 import { SearchService } from './services/search.service';
 import { FavoriteService } from './services/favorite.service';
 import { DetailsService } from './services/details.service';
+import { ProcessingBarService} from './processing-bar/processing-bar.service';
 // pipe
 import { CapToVarPipe } from './pipes/cap-to-var.pipe';
 // directive
 import { WhitespaceDirective } from './directives/whitespace.directive';
 import { ZipcodeDirective } from './directives/zipcode.directive';
+import { ProcessingBarComponent } from './processing-bar/processing-bar.component';
 
 
 
@@ -52,7 +53,8 @@ import { ZipcodeDirective } from './directives/zipcode.directive';
   providers: [
     SearchService,
     FavoriteService,
-    DetailsService
+    DetailsService,
+    ProcessingBarService
   ],
   bootstrap: [AppComponent]
 })

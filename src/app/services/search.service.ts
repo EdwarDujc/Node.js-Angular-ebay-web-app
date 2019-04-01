@@ -19,7 +19,8 @@ export class SearchService {
 
   private searchResults: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+
 
   getHereZipcode() {
     const url = 'http://ip-api.com/json';
@@ -43,7 +44,6 @@ export class SearchService {
       .set('userZipcode', form.userZipcode);
 
     const response = this.http.get('http://localhost:8081/process_get', { params });
-
     response.subscribe(
       data => {
         this.jsonData = data;
