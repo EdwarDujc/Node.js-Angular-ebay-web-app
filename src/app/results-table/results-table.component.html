@@ -20,7 +20,12 @@
         <th scope="row">{{i+1+(currentPage-1)*10}}</th>
         
         <td><img src="{{item['image']}}" alt="icon" class="category-cion"></td>
-        <td>{{item['title']}}</td>
+        <td>
+<!--          <div matTooltip="{{item['full_title']}}" [matTooltipClass]="'tooltip'">-->
+          <div matTooltip="{{item['full_title']}}" matTooltipPosition="below">
+          {{item['title']}}
+          </div>
+        </td>
         <td>{{item['price']}}</td>
         <td>{{item['shipping']}}</td>
         <td>{{item['zip']}}</td>

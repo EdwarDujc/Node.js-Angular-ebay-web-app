@@ -15,3 +15,7 @@ img {
   display: inline-flex;
   vertical-align: middle;
 }
+
+button:hover {
+  text-decoration: underline;
+}
