@@ -7,7 +7,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ModalModule, BsModalRef } from 'ngx-bootstrap';
+import { ModalModule, BsModalRef} from 'ngx-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // component
 import { AppComponent } from './app.component';
 import { SearchDivComponent } from './search-div/search-div.component';
@@ -62,7 +63,8 @@ import { SimilarTabComponent } from './details-table/similar-tab/similar-tab.com
     BrowserAnimationsModule,
     NgxPaginationModule,
     MatTooltipModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NgbModule
   ],
   providers: [
     SearchService,

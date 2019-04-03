@@ -25,12 +25,15 @@
     </div>
   </div>
 
-  <nav>
+  <br>
+  <br>
+
+  <div id="nav-div1">
     <div class="nav nav-pills justify-content-end" id="nav-pills" role="tablist">
       <a href="#" *ngFor="let tab of tabs" [id]="tab.id" class="nav-item nav-link" [class.active]="tab.id === currentTab" role="tab"
          data-toggle="tab" [attr.aria-controls]="tab.id+'-panel'" (click)="setTab(tab.id)">{{tab.title}}</a>
     </div>
-  </nav>
+  </div>
 
   <div class="tab-content" id="nav-tab-content">
     <div class="tab-pane" [class.active]="currentTab==='product-tab'" role="tabpanel" id="product-tab-panel" aria-labelledby="product-tab">

@@ -42,3 +42,8 @@ img {
     display: -moz-box;
   }
 }
+
+#nav-div1 {
+  /*margin-top: 40px;*/
+  /*float: right;*/
+}

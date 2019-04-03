@@ -1,0 +1,60 @@
+<div class="alert alert-warning" role="alert" *ngIf="product['ask']==='failure'">
+  No Details Found.
+</div>
+
+<div id="results-div" class="table-responsive">
+  <table id="product-table" class="table table-dark table-striped">
+    <tr *ngIf="product['productImgUrls']">
+      <th scope="row">Product Images</th>
+      <td>
+        <a id="photos-anchor" role="button" (click)="openModal(template)">View Product Images Here</a>
+
+        <ng-template #template>
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Product Images</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ngb-carousel [showNavigationIndicators]="false">
+              <ng-template ngbSlide *ngFor="let u of product['productImgUrls']; let i = index">
+                <img [src]=u alt="slide {{i}}">
+              </ng-template>
+<!--              <ng-template ngbSlide>-->
+<!--                <img [src]="images[1]" alt="Random second slide">-->
+<!--              </ng-template>-->
+<!--              <ng-template ngbSlide>-->
+<!--                <img [src]="images[2]" alt="Random third slide">-->
+<!--              </ng-template>-->
+            </ngb-carousel>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalRef.hide()">Close</button>
+          </div>
+        </ng-template>
+
+      </td>
+    </tr>
+    <tr *ngIf="product['subtitle']">
+      <th scope="row">Subtitle</th>
+      <td>{{product['subtitle']}}</td>
+    </tr>
+    <tr *ngIf="product['price']">
+      <th scope="row">Price</th>
+      <td>{{product['price']}}</td>
+    </tr>
+    <tr *ngIf="product['location']">
+      <th scope="row">Location</th>
+      <td>{{product['location']}}</td>
+    </tr>
+    <tr *ngIf="product['returnPolicy']">
+      <th scope="row">Return Policy</th>
+      <td>{{product['returnPolicy']}}</td>
+    </tr>
+    <tr *ngFor="let spe of product['itemSpecifics']">
+      <th scope="row">{{spe['Name']}}</th>
+      <td>{{spe['Value']}}</td>
+    </tr>
+  </table>
+</div>
