@@ -3,12 +3,16 @@ img {
   height: 120px;
 }
 
+#results-div {
+  margin-top: 20px;
+}
+
 #results-div-table {
   text-align: left;
 }
 
-.pagination {
-  text-align: center;
+.pagination_buttons {
+  margin: 0 auto;
 }
 
 .material-icons {
@@ -17,5 +21,13 @@ img {
 }
 
 button:hover {
+  text-decoration: underline;
+}
+
+.title-div {
+  color: dodgerblue;
+}
+
+.title-div :hover {
   text-decoration: underline;
 }

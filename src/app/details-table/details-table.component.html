@@ -1,3 +1,53 @@
-<p>
-  details-table works!
-</p>
+<div class="alert alert-warning" role="alert" *ngIf="showNoDetails">
+  No Records.
+</div>
+<div id="details-div" *ngIf="details">
+
+  <div id="details-title">
+    <h3>{{this.details['Item']['Title']}}</h3>
+  </div>
+
+  <div id="details-buttons">
+    <div class="left">
+      <button class="btn btn-light" id="button-list">
+        <i class="material-icons">navigate_before</i>List
+      </button>
+    </div>
+    <div class="right">
+      <button class="btn btn-light" id="button-facebook">
+        <img src="http://csci571.com/hw/hw8/Images/facebook.png">
+      </button>
+      <button class="btn btn-light" id="button-favor">
+        <i class="material-icons">
+          remove_shopping_cart
+        </i>
+      </button>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav nav-pills justify-content-end" id="nav-pills" role="tablist">
+      <a href="#" *ngFor="let tab of tabs" [id]="tab.id" class="nav-item nav-link" [class.active]="tab.id === currentTab" role="tab"
+         data-toggle="tab" [attr.aria-controls]="tab.id+'-panel'" (click)="setTab(tab.id)">{{tab.title}}</a>
+    </div>
+  </nav>
+
+  <div class="tab-content" id="nav-tab-content">
+    <div class="tab-pane" [class.active]="currentTab==='product-tab'" role="tabpanel" id="product-tab-panel" aria-labelledby="product-tab">
+      <app-product-tab [product]="productJson"></app-product-tab>
+    </div>
+    <div class="tab-pane" [class.active]="currentTab==='photos-tab'" role="tabpanel" id="photos-tab-panel" aria-labelledby="photos-tab">
+      <app-photos-tab [photos]="photosJson"></app-photos-tab>
+    </div>
+    <div class="tab-pane" [class.active]="currentTab==='shipping-tab'" role="tabpanel" id="shipping-tab-panel" aria-labelledby="shipping-tab">
+      <app-shipping-tab [shipping]="shippingJson"></app-shipping-tab>
+    </div>
+    <div class="tab-pane" [class.active]="currentTab==='seller-tab'" role="tabpanel" id="seller-tab-panel" aria-labelledby="seller-tab">
+      <app-seller-tab [seller]="sellerJson"></app-seller-tab>
+    </div>
+    <div class="tab-pane" [class.active]="currentTab==='similar-tab'" role="tabpanel" id="similar-tab-panel" aria-labelledby="similar-tab">
+      <app-similar-tab [similar]="similarJson"></app-similar-tab>
+    </div>
+  </div>
+
+</div>

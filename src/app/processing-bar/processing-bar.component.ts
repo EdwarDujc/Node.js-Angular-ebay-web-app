@@ -10,11 +10,14 @@ import { Subject } from 'rxjs';
 })
 export class ProcessingBarComponent implements OnInit {
   progressAriaValue;
-  showProcessingBar = true;
+  showProcessingBar;
 
   constructor(private pService: ProcessingBarService) {
     this.pService.progressObserve.subscribe( data => {
       this.progressAriaValue = data;
+    });
+    this.pService.showProcessingObserve.subscribe(data => {
+      this.showProcessingBar = data;
     });
   }
 

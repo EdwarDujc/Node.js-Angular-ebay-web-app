@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { ProcessingBarService} from '../processing-bar/processing-bar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class SearchService {
 
   private searchResults: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private pService: ProcessingBarService) {}
 
 
   getHereZipcode() {
@@ -29,6 +30,7 @@ export class SearchService {
 
   search(form) {
     // console.log('submit clicked');
+    this.clear();
     const zipcode = form.userZipcode;
     const params = new HttpParams()
       .set('keyword', form.keyword)
@@ -43,9 +45,15 @@ export class SearchService {
       .set('hereZipcode', form.hereZipcode)
       .set('userZipcode', form.userZipcode);
 
+    this.pService.setShowProgress(true);
+    this.pService.setProgress(75);
+
     const response = this.http.get('http://localhost:8081/process_get', { params });
     response.subscribe(
       data => {
+        this.pService.setShowProgress(false);
+        this.pService.setProgress(0);
+
         this.jsonData = data;
         // console.log(data);
         this.subIsDataGet.next(true);

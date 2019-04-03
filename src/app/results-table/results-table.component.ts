@@ -41,15 +41,15 @@ export class ResultsTableComponent implements OnInit {
         this.resultJson = null;
         this.showNoRecords = false;
       } else if (data['findItemsAdvancedResponse'][0]['searchResult'][0]['@count'] === "0") {
-        console.log('zero item!');
+        // console.log('zero item!');
         this.showResult = false;
         this.showNoRecords = true;
         this.resultJson = null;
       } else { // normally display results table
         const totalItems = +data['findItemsAdvancedResponse'][0]['searchResult'][0]['@count'];
-        console.log('data items count: ', totalItems);
+        // console.log('data items count: ', totalItems);
         this.totalPage = totalItems / 10;
-        console.log('totalPage: ', this.totalPage);
+        // console.log('totalPage: ', this.totalPage);
         this.error = false;
         this.showResult = true;
         const items = data['findItemsAdvancedResponse'][0]['searchResult'][0]['item'];
@@ -58,6 +58,11 @@ export class ResultsTableComponent implements OnInit {
         this.resultJson = [];
         for (let i = 0; i < totalItems; i++) {
           let item = {};
+          try {
+            item['itemId'] = items[i]['itemId'][0];
+          } catch {
+            item['itemId'] = '0';
+          }
           try {
             item['image'] = items[i]['galleryURL'];
           } catch {
@@ -118,12 +123,17 @@ export class ResultsTableComponent implements OnInit {
       // console.log('showNoRecords: ', this.showNoRecords);
       // console.log('showResult: ', this.showResult);
       // console.log('error: ', this.error);
-      console.log('data in results-table.component.ts: ', data);
+      // console.log('data in results-table.component.ts: ', data);
     });
   }
 
   setFavorite(index) {
     console.log('to-implement: add item ', index, 'to wish list');
+  }
+
+  getDetails(itemId) {
+    // console.log('to-implement: get details of item ', itemId);
+    this.dService.retrieveDetails(itemId);
   }
 
   goPreviousPage() {

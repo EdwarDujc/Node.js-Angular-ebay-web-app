@@ -104,6 +104,26 @@ app.get("/process_get", function(req, res) {
 
 });
 
+app.get("/details", function(req, res) {
+  var response;
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+  console.log(req.query);
+
+  var url = "http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON&appid=Jincheng-USCCSCI5-PRD-916e2f5cf-2683f609&siteid=0&version=967&ItemID=";
+  url += req.query.itemId;
+  url += "&IncludeSelector=Description,Details,ItemSpecifics";
+
+  console.log(url);
+
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      //console.log(body);
+      res.send(body);
+    }
+  });
+});
+
 app.get("/photo*.png", function(req, res) {
     console.log(req.path);
     var index = req.path.substring(6);

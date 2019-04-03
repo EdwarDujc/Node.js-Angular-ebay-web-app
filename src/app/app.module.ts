@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap';
 // component
 import { AppComponent } from './app.component';
 import { SearchDivComponent } from './search-div/search-div.component';
@@ -25,6 +26,11 @@ import { CapToVarPipe } from './pipes/cap-to-var.pipe';
 import { WhitespaceDirective } from './directives/whitespace.directive';
 import { ZipcodeDirective } from './directives/zipcode.directive';
 import { ProcessingBarComponent } from './processing-bar/processing-bar.component';
+import { ProductTabComponent } from './details-table/product-tab/product-tab.component';
+import { PhotosTabComponent } from './details-table/photos-tab/photos-tab.component';
+import { ShippingTabComponent } from './details-table/shipping-tab/shipping-tab.component';
+import { SellerTabComponent } from './details-table/seller-tab/seller-tab.component';
+import { SimilarTabComponent } from './details-table/similar-tab/similar-tab.component';
 
 
 
@@ -40,7 +46,12 @@ import { ProcessingBarComponent } from './processing-bar/processing-bar.componen
     ResultsTableComponent,
     DetailsTableComponent,
     FavoriteListComponent,
-    ProcessingBarComponent
+    ProcessingBarComponent,
+    ProductTabComponent,
+    PhotosTabComponent,
+    ShippingTabComponent,
+    SellerTabComponent,
+    SimilarTabComponent
   ],
   imports: [
     BrowserModule,
@@ -50,13 +61,15 @@ import { ProcessingBarComponent } from './processing-bar/processing-bar.componen
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ModalModule.forRoot()
   ],
   providers: [
     SearchService,
     FavoriteService,
     DetailsService,
-    ProcessingBarService
+    ProcessingBarService,
+    BsModalRef
   ],
   bootstrap: [AppComponent]
 })

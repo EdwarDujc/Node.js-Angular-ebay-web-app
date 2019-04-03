@@ -16,14 +16,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of resultJson | paginate: { itemsPerPage: 10, currentPage: currentPage }; let i = index">
+      <tr *ngFor="let item of resultJson | paginate: { itemsPerPage: 10, currentPage: currentPage }; let i = index;">
         <th scope="row">{{i+1+(currentPage-1)*10}}</th>
         
         <td><img src="{{item['image']}}" alt="icon" class="category-cion"></td>
         <td>
-<!--          <div matTooltip="{{item['full_title']}}" [matTooltipClass]="'tooltip'">-->
-          <div matTooltip="{{item['full_title']}}" matTooltipPosition="below">
-          {{item['title']}}
+          <div matTooltip="{{item['full_title']}}" matTooltipPosition="below" class="title-div">
+            <a role="button" (click)="getDetails(item['itemId'])">{{item['title']}}</a>
           </div>
         </td>
         <td>{{item['price']}}</td>
@@ -35,24 +34,21 @@
             <i class="material-icons">
               add_shopping_cart
             </i>
-<!--            <i class="material-icons">-->
-<!--              remove_shopping_cart-->
-<!--            </i>-->
           </button>
         </td>
       <tr>
     </tbody>
   </table>
 </div>
-<div class="pagination" *ngIf="resultJson">
+<div class="pagination_buttons" *ngIf="resultJson">
   <button class="btn btn-light" id="button_prev" (click)="goPreviousPage()">
     <!--    <i class="material-icons">keyboard_arrow_left</i>-->
 <!--    <i class="material-icons">navigate_before</i>-->
     &laquo; Previous
   </button>
-  <div *ngFor="let i of pageIndexArray">
+  <span *ngFor="let i of pageIndexArray">
     <button [class]=buttonIndexClass[i-1] (click)="goToPage(i)">{{i}}</button>
-  </div>
+  </span>
   <button class="btn btn-light" id="button_nxt" (click)="goNextPage()">
     Next &raquo;
 <!--    <i class="material-icons" style="font-size: 15px">navigate_next</i>-->
