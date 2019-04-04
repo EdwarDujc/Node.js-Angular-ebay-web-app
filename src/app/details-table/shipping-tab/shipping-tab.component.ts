@@ -11,6 +11,7 @@ export class ShippingTabComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges() {
+    // console.log('shipping: ', this.shipping);
   }
 
 }

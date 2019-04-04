@@ -8,7 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ModalModule, BsModalRef} from 'ngx-bootstrap';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
+
 // component
 import { AppComponent } from './app.component';
 import { SearchDivComponent } from './search-div/search-div.component';
@@ -64,7 +66,8 @@ import { SimilarTabComponent } from './details-table/similar-tab/similar-tab.com
     NgxPaginationModule,
     MatTooltipModule,
     ModalModule.forRoot(),
-    NgbModule
+    NgbModule,
+    RoundProgressModule
   ],
   providers: [
     SearchService,

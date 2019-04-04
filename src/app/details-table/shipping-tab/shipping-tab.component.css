@@ -1,0 +1,12 @@
+#shipping-div {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.done-icon {
+  color: green;
+}
+
+.clear-icon {
+  color: red;
+}

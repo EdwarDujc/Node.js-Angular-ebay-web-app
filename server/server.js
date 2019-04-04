@@ -93,7 +93,7 @@ app.get("/process_get", function(req, res) {
     //store info
     url += "&outputSelector(1)=StoreInfo";
 
-    console.log(url);
+    // console.log(url);
 
     request(url, function (error, response, body) {
       if (!error && response.statusCode === 200) {
@@ -128,13 +128,13 @@ app.get("/photos", function(req, res) {
   var response;
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-  console.log(req.query);
+  // console.log(req.query);
 
   var url = "https://www.googleapis.com/customsearch/v1?q=";
   url += req.query.keyword;
   url += "&cx=017030067582812733545:tk2vekergf8&imgSize=huge&imgType=news&num=8&searchType=image&key=AIzaSyClpgG450XgRvNOkY_mdNIc5W0MJgXxlLo";
 
-  console.log(url);
+  // console.log(url);
 
   request(url, function (error, response, body) {
     if (!error && response.statusCode === 200) {

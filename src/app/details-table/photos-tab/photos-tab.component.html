@@ -1,5 +1,3 @@
-<p>photos-tab here </p>
-
 <div id="photos-div">
   <div class="photos-container" *ngIf="photos['ack']=='success'" class="row">
     <div id="photo-col-1" class="col-sm-4 photo-col">
@@ -22,5 +20,5 @@
       </a></div>
     </div>
   </div>
-  <div class="alert alert-warning" role="alert" *ngIf="photos['ack']=='failure'">No photos!</div>
+  <div class="alert alert-warning" role="alert" *ngIf="!photos || photos['ack']=='failure'">No photos!</div>
 </div>

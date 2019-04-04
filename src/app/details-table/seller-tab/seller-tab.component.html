@@ -1,3 +1,27 @@
-<p>
-  seller-tab works!
-</p>
+<div class="alert alert-warning" role="alert" *ngIf="!seller">
+  No Seller Information Found.
+</div>
+
+<div id="seller-div" class="table-responsive">
+  <table id="product-table" class="table table-dark table-striped">
+    <tr *ngIf="seller['feedbackScore']">
+      <th scope="row">Feedback Score</th>
+      <td>
+        <div class="inside-text" ng-reflect-ng-style="[object Object]">{{seller['feedbackScore']}}</div>
+        <round-progress
+          [current]="seller['feedbackScore']"
+          [max]="100"
+          [color]="'#167a14'"
+          [background]="'#eaeaea'"
+          [radius]="18"
+          [stroke]="3"
+          [rounded]="true"
+          [clockwise]="false"
+          [responsive]="false"
+          [duration]="800"
+          [animation]="'easeInOutQuart'"
+          [animationDelay]="0"></round-progress>
+      </td>
+    </tr>
+  </table>
+</div>

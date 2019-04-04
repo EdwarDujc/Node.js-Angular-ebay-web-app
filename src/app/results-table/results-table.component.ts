@@ -110,6 +110,21 @@ export class ResultsTableComponent implements OnInit {
           } catch {
             item['seller'] = 'N.A.';
           }
+          try {
+            item['shippinginfo'] = items[i]['shippingInfo'][0];
+          } catch {
+            item['shippinginfo'] = {};
+          }
+          try {
+            item['returnsAccepted'] = items[i]['returnsAccepted'];
+          } catch {
+            item['returnsAccepted'] = '';
+          }
+          try {
+            item['sellerInfo'] = items[i]['sellerInfo'];
+          } catch {
+            item['sellerInfo'] = '';
+          }
 
           this.resultJson.push(item);
         }
@@ -131,10 +146,11 @@ export class ResultsTableComponent implements OnInit {
     console.log('to-implement: add item ', index, 'to wish list');
   }
 
-  getDetails(itemId, fullTitle) {
-    // console.log('to-implement: get details of item ', itemId);
-    this.dService.retrieveDetails(itemId);
-    this.dService.retrievePhotos(fullTitle);
+  getDetails(item) {
+    this.dService.retrieveDetails(item['itemId']);
+    this.dService.retrievePhotos(item['full_title']);
+    this.dService.retrieveShippingInfo(item['shippinginfo'], item['returnsAccepted']);
+    this.dService.retrieveSellerInfo(item['sellerInfo']);
   }
 
   goPreviousPage() {

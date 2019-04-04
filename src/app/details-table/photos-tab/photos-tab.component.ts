@@ -19,7 +19,7 @@ export class PhotosTabComponent implements OnChanges {
   constructor() {}
 
   ngOnChanges() {
-    console.log('photo data in photo-tab.ts: ', this.photos);
+    // console.log('photo data in photo-tab.ts: ', this.photos);
     try {
       this.displayWidth = window.screen.width;
       if (this.displayWidth > 600) {

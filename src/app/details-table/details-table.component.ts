@@ -22,13 +22,14 @@ export class DetailsTableComponent implements OnInit {
   ];
 
   @Output() slide = new EventEmitter<string>();
+  showNoDetails = false;
   details: any;
   photos: any;
-  showNoDetails = false;
+  shipping: any;
+  seller: any;
 
   private currentTab = 'product-tab';
 
-  // productJson: Product;
   productJson = {};
   photosJson = {};
   shippingJson = {};
@@ -122,6 +123,14 @@ export class DetailsTableComponent implements OnInit {
     this.photosJson = tmpJson;
   }
 
+  setShippingTab(data) {
+    this.shippingJson = data;
+  }
+
+  setSellerTab(data) {
+    this.sellerJson = data;
+  }
+
   constructor(
     private dService: DetailsService,
     private fService: FavoriteService,
@@ -137,6 +146,18 @@ export class DetailsTableComponent implements OnInit {
       this.myZone.run(() => {
         this.photos = data;
         this.setImageTab(data);
+      });
+    });
+    this.dService.shipping.subscribe(data =>{
+      this.myZone.run(() => {
+        this.shipping = data;
+        this.setShippingTab(data);
+      });
+    });
+    this.dService.seller.subscribe(data =>{
+      this.myZone.run(() => {
+        this.seller = data;
+        this.setSellerTab(data);
       });
     });
   }

@@ -1,3 +1,62 @@
-<p>
-  shipping-tab works!
-</p>
+<div class="alert alert-warning" role="alert" *ngIf="shipping['shippinginfo']">
+  No Details Found.
+</div>
+
+<div id="shipping-div" class="table-responsive">
+  <table id="product-table" class="table table-dark table-striped">
+    <tr *ngIf="shipping['shippingInfo']['shippingCost']">
+      <th scope="row">Shipping Cost</th>
+      <td>{{shipping['shippingInfo']['shippingCost']}}</td>
+    </tr>
+    <tr *ngIf="shipping['shippingInfo']['shippingLocation']">
+      <th scope="row">Shipping Locations</th>
+      <td>{{shipping['shippingInfo']['shippingLocation']}}</td>
+    </tr>
+    <tr *ngIf="shipping['shippingInfo']['handlingTime']">
+      <th scope="row">Handling time</th>
+      <td>{{shipping['shippingInfo']['handlingTime']}}</td>
+    </tr>
+
+    <tr *ngIf="shipping['shippingInfo']['expeditedShipping']">
+      <th scope="row">Expedited Shipping</th>
+      <td *ngIf="shipping['shippingInfo']['expeditedShipping'] !== 'false'">
+        <i class="material-icons done-icon">
+          done
+        </i>
+      </td>
+      <td *ngIf="shipping['shippingInfo']['expeditedShipping'] === 'false'">
+        <i class="material-icons clear-icon">
+          clear
+        </i>
+      </td>
+    </tr>
+
+    <tr *ngIf="shipping['shippingInfo']['oneDayShippingAvailable']">
+      <th scope="row">One Day Shipping</th>
+      <td *ngIf="shipping['shippingInfo']['oneDayShippingAvailable'] !== 'false'">
+        <i class="material-icons done-icon">
+          done
+        </i>
+      </td>
+      <td *ngIf="shipping['shippingInfo']['oneDayShippingAvailable'] === 'false'">
+        <i class="material-icons clear-icon">
+          clear
+        </i>
+      </td>
+    </tr>
+
+    <tr *ngIf="shipping['returnsAccepted']">
+      <th scope="row">Return Accepted</th>
+      <td *ngIf="shipping['shippingInfo']['returnsAccepted'] !== 'false'">
+        <i class="material-icons done-icon">
+          done
+        </i>
+      </td>
+      <td *ngIf="shipping['shippingInfo']['returnsAccepted'] === 'false'">
+        <i class="material-icons clear-icon">
+          clear
+        </i>
+      </td>
+    </tr>
+  </table>
+</div>
