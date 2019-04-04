@@ -131,9 +131,10 @@ export class ResultsTableComponent implements OnInit {
     console.log('to-implement: add item ', index, 'to wish list');
   }
 
-  getDetails(itemId) {
+  getDetails(itemId, fullTitle) {
     // console.log('to-implement: get details of item ', itemId);
     this.dService.retrieveDetails(itemId);
+    this.dService.retrievePhotos(fullTitle);
   }
 
   goPreviousPage() {

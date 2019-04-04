@@ -22,7 +22,7 @@
         <td><img src="{{item['image']}}" alt="icon" class="category-cion"></td>
         <td>
           <div matTooltip="{{item['full_title']}}" matTooltipPosition="below" class="title-div">
-            <a role="button" (click)="getDetails(item['itemId'])">{{item['title']}}</a>
+            <a role="button" (click)="getDetails(item['itemId'], item['full_title'])">{{item['title']}}</a>
           </div>
         </td>
         <td>{{item['price']}}</td>

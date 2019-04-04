@@ -19,7 +19,7 @@ app.get("/process_get", function(req, res) {
     var response;
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-    console.log(req.query);
+    // console.log(req.query);
 
     var url = "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=Jincheng-USCCSCI5-PRD-916e2f5cf-2683f609&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=50";
     var filterId = 0;
@@ -96,7 +96,7 @@ app.get("/process_get", function(req, res) {
     console.log(url);
 
     request(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
+      if (!error && response.statusCode === 200) {
         //console.log(body);
         res.send(body);
       }
@@ -108,7 +108,7 @@ app.get("/details", function(req, res) {
   var response;
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-  console.log(req.query);
+  // console.log(req.query);
 
   var url = "http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON&appid=Jincheng-USCCSCI5-PRD-916e2f5cf-2683f609&siteid=0&version=967&ItemID=";
   url += req.query.itemId;
@@ -117,37 +117,31 @@ app.get("/details", function(req, res) {
   console.log(url);
 
   request(url, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode === 200) {
       //console.log(body);
       res.send(body);
     }
   });
 });
 
-app.get("/photo*.png", function(req, res) {
-    console.log(req.path);
-    var index = req.path.substring(6);
-    var hou = index.indexOf(".png");
-    index = index.substring(0, hou);
-    let urlPhoto = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=" + detailsPhotoArray[index].width + "&photoreference=" + detailsPhotoArray[index].photo_reference + "&key=" + googleapikey;
+app.get("/photos", function(req, res) {
+  var response;
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+  console.log(req.query);
 
-    res.redirect(urlPhoto);
-});
+  var url = "https://www.googleapis.com/customsearch/v1?q=";
+  url += req.query.keyword;
+  url += "&cx=017030067582812733545:tk2vekergf8&imgSize=huge&imgType=news&num=8&searchType=image&key=AIzaSyClpgG450XgRvNOkY_mdNIc5W0MJgXxlLo";
 
-app.get("/processing", function(req, res) {
-    res.redirect("/");
-});
+  console.log(url);
 
-app.get("/search-results", function(req, res) {
-    res.redirect("/");
-});
-
-app.get("/place-detail", function(req, res) {
-    res.redirect("/");
-});
-
-app.get("/favorate-results", function(req, res) {
-    res.redirect("/");
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      //console.log(body);
+      res.send(body);
+    }
+  });
 });
 
 app.use(express.static("dist"));
