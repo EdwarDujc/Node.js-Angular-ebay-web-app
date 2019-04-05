@@ -11,6 +11,7 @@ export class SimilarTabComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges() {
+    console.log('similar: ', this.similar);
   }
 
 }

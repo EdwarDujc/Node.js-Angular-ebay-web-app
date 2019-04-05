@@ -1,10 +1,10 @@
 <div class="alert alert-warning" role="alert" *ngIf="showNoDetails">
   No Records.
 </div>
-<div id="details-div" *ngIf="details">
+<div id="details-div" *ngIf="product">
 
   <div id="details-title">
-    <h3>{{this.details['Item']['Title']}}</h3>
+    <h3>{{this.product['Item']['Title']}}</h3>
   </div>
 
   <div id="details-buttons">

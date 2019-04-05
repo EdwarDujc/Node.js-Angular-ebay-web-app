@@ -7,6 +7,9 @@ import { ProcessingBarService} from '../processing-bar/processing-bar.service';
   providedIn: 'root'
 })
 export class DetailsService {
+
+  private url = 'http://localhost:8081';
+
   private subDetails = new Subject();
   details = this.subDetails.asObservable();
 
@@ -18,6 +21,9 @@ export class DetailsService {
 
   private subSeller = new Subject();
   seller = this.subSeller.asObservable();
+
+  private subSimilar = new Subject();
+  similar = this.subSimilar.asObservable();
 
   private detailJsonData: any;
   private detailSearchResults: any;
@@ -31,6 +37,9 @@ export class DetailsService {
   private sellerJsonData: any;
   private sellerSearchResults: any;
 
+  private similarJsonData: any;
+  private similarSearchResults: any;
+
   constructor(private http: HttpClient, private pService: ProcessingBarService) { }
 
   retrieveDetails(itemId) {
@@ -40,14 +49,14 @@ export class DetailsService {
     this.pService.setShowProgress(true);
     this.pService.setProgress(75);
 
-    const response = this.http.get('http://localhost:8081/details', { params });
+    const response = this.http.get(this.url + '/details', { params });
     response.subscribe(
       data => {
         this.pService.setShowProgress(false);
         this.pService.setProgress(0);
 
         this.detailJsonData = data;
-        // console.log('details data: ', data);
+        // console.log('product data: ', data);
         this.subDetails.next(this.detailJsonData);
         this.detailSearchResults = data;
       },
@@ -61,7 +70,7 @@ export class DetailsService {
     const params = new HttpParams()
       .set('keyword', keyword);
 
-    const response = this.http.get('http://localhost:8081/photos', { params });
+    const response = this.http.get(this.url + '/photos', { params });
     response.subscribe(
       data => {
         this.pService.setShowProgress(false);
@@ -188,5 +197,23 @@ export class DetailsService {
     this.sellerJsonData = tmpJson;
     this.subSeller.next(this.sellerJsonData);
     this.sellerSearchResults = tmpJson;
+  }
+
+  retrieveSimilar(itemId) {
+    const params = new HttpParams()
+      .set('itemId', itemId);
+
+    const response = this.http.get(this.url + '/similar', { params });
+    response.subscribe(
+      data => {
+        this.similarJsonData = data;
+        console.log('similar data: ', data);
+        this.subSimilar.next(this.similarJsonData);
+        this.similarSearchResults = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }

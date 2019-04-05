@@ -7,6 +7,9 @@ import { ProcessingBarService} from '../processing-bar/processing-bar.service';
   providedIn: 'root'
 })
 export class SearchService {
+
+  private url = 'http://localhost:8081';
+
   private jsonData: any;
 
   private subIsClear = new Subject();
@@ -48,7 +51,7 @@ export class SearchService {
     this.pService.setShowProgress(true);
     this.pService.setProgress(75);
 
-    const response = this.http.get('http://localhost:8081/process_get', { params });
+    const response = this.http.get(this.url + '/search', { params });
     response.subscribe(
       data => {
         this.pService.setShowProgress(false);

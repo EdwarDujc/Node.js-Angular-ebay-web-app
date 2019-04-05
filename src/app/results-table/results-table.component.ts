@@ -157,6 +157,7 @@ export class ResultsTableComponent implements OnInit {
     this.dService.retrievePhotos(item['full_title']);
     this.dService.retrieveShippingInfo(item['shippinginfo'], item['returnsAccepted']);
     this.dService.retrieveSellerInfo(item);
+    this.dService.retrieveSimilar(item['itemId']);
   }
 
   goPreviousPage() {

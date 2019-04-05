@@ -1,6 +1,9 @@
 var express = require("express");
 var request = require("request");
 var fs = require("fs");
+
+var FrontUrl = "http://localhost:4200";
+
 fs.readdir("static/", function(err, files) {
    if (err) {
     fs.mkdir("static/", function(err) {
@@ -14,11 +17,11 @@ fs.readdir("static/", function(err, files) {
 var detailsPhotoArray;
 var app = express();
 
-app.get("/process_get", function(req, res) {
+app.get("/search", function(req, res) {
 
     var response;
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.setHeader("Access-Control-Allow-Origin", FrontUrl);
     // console.log(req.query);
 
     var url = "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=Jincheng-USCCSCI5-PRD-916e2f5cf-2683f609&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=50";
@@ -104,10 +107,10 @@ app.get("/process_get", function(req, res) {
 
 });
 
-app.get("/details", function(req, res) {
+app.get("/product", function(req, res) {
   var response;
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.setHeader("Access-Control-Allow-Origin", FrontUrl);
   // console.log(req.query);
 
   var url = "http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON&appid=Jincheng-USCCSCI5-PRD-916e2f5cf-2683f609&siteid=0&version=967&ItemID=";
@@ -127,7 +130,7 @@ app.get("/details", function(req, res) {
 app.get("/photos", function(req, res) {
   var response;
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.setHeader("Access-Control-Allow-Origin", FrontUrl);
   // console.log(req.query);
 
   var url = "https://www.googleapis.com/customsearch/v1?q=";
@@ -137,6 +140,26 @@ app.get("/photos", function(req, res) {
   console.log(url);
   //remove!!!!!
   url = "www.amazon.com";
+
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      console.log(body);
+      res.send(body);
+    }
+  });
+});
+
+app.get("/similar", function(req, res) {
+  var response;
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  res.setHeader("Access-Control-Allow-Origin", FrontUrl);
+  // console.log(req.query);
+
+  var url = "http://svcs.ebay.com/MerchandisingService?OPERATION-NAME=getSimilarItems&SERVICE-NAME=MerchandisingService&SERVICE-VERSION=1.1.0&CONSUMER-ID=Jincheng-USCCSCI5-PRD-916e2f5cf-2683f609&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&itemId=";
+  url += req.query.itemId;
+  url += "&maxResults=20";
+
+  console.log(url);
 
   request(url, function (error, response, body) {
     if (!error && response.statusCode === 200) {
