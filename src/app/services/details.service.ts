@@ -207,7 +207,7 @@ export class DetailsService {
     response.subscribe(
       data => {
         this.similarJsonData = data;
-        console.log('similar data: ', data);
+        // console.log('similar data: ', data);
         this.subSimilar.next(this.similarJsonData);
         this.similarSearchResults = data;
       },

@@ -10,7 +10,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ModalModule, BsModalRef} from 'ngx-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 // component
 import { AppComponent } from './app.component';
 import { SearchDivComponent } from './search-div/search-div.component';
@@ -67,7 +68,9 @@ import { SimilarTabComponent } from './details-table/similar-tab/similar-tab.com
     MatTooltipModule,
     ModalModule.forRoot(),
     NgbModule,
-    RoundProgressModule
+    RoundProgressModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule
   ],
   providers: [
     SearchService,

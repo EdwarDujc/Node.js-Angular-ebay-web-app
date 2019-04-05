@@ -41,7 +41,7 @@ export class PhotosTabComponent implements OnChanges {
         }
       }
     } catch (err) {
-      console.log('catch error: ', err);
+      // console.log('catch error: ', err);
       this.photos = false;
       return;
     }
