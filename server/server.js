@@ -96,7 +96,7 @@ app.get("/search", function(req, res) {
     //store info
     url += "&outputSelector(1)=StoreInfo";
 
-    // console.log(url);
+    console.log(url);
 
     request(url, function (error, response, body) {
       if (!error && response.statusCode === 200) {
@@ -107,7 +107,7 @@ app.get("/search", function(req, res) {
 
 });
 
-app.get("/product", function(req, res) {
+app.get("/details", function(req, res) {
   var response;
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
   res.setHeader("Access-Control-Allow-Origin", FrontUrl);

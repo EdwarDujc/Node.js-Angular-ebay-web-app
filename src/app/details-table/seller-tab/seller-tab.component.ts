@@ -38,10 +38,16 @@ export class SellerTabComponent implements OnChanges {
   getOverlayStyle() {
     let isSemi = this.semicircle;
     let transform
-    if (this.seller['positiveFeedbackPercent'] == '100.0') {
+    // console.log("length: ", this.seller['positiveFeedbackPercent'][0].length);
+    // console.log("value: ", this.seller['positiveFeedbackPercent'][0]);
+    if (this.seller['positiveFeedbackPercent'][0].length === 6) {
       transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(23%)';
-    } else {
+    } else if (this.seller['positiveFeedbackPercent'][0].length === 5) {
+      transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(32%)';
+    } else if (this.seller['positiveFeedbackPercent'][0].length === 4) {
       transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(39%)';
+    } else {
+      transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(80%)';
     }
 
     return {
