@@ -37,15 +37,15 @@ export class SearchDivComponent implements OnInit {
   ];
 
   getHereZipcode() {
-    // this.myService.getHereZipcode().subscribe(data => {
-    //   this.hereZipcode = data["zip"];
-    //   this.form.hereZipcode = this.hereZipcode;
-    //   this.gotZipcode = true;
-    // });
-    this.hereZipcode = '90007';
-    this.form.hereZipcode = this.hereZipcode;
-    this.gotZipcode = true;
-    console.log('this.hereZipcode: ', this.hereZipcode);
+    this.myService.getHereZipcode().subscribe(data => {
+      this.hereZipcode = data["zip"];
+      this.form.hereZipcode = this.hereZipcode;
+      this.gotZipcode = true;
+    });
+    // this.hereZipcode = '90007';
+    // this.form.hereZipcode = this.hereZipcode;
+    // this.gotZipcode = true;
+    // console.log('this.hereZipcode: ', this.hereZipcode);
 
   }
 

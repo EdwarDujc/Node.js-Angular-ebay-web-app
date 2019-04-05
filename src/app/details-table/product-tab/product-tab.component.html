@@ -19,7 +19,10 @@
           <div class="modal-body">
             <ngb-carousel [showNavigationIndicators]="false">
               <ng-template ngbSlide *ngFor="let u of product['productImgUrls']; let i = index">
-                <img [src]=u alt="slide {{i}}">
+<!--                <img [src]=u alt="slide {{i}}">-->
+                <a [href]=u target="_blank">
+                  <img [src]=u alt="slide {{i}}">
+                </a>
               </ng-template>
 <!--              <ng-template ngbSlide>-->
 <!--                <img [src]="images[1]" alt="Random second slide">-->

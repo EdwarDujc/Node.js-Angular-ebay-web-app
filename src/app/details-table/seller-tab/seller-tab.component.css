@@ -4,10 +4,64 @@
 }
 
 .inside-text {
-  top: 50%;
-  bottom: auto;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
   font-size: 14px;
   color:white;
+  /*margin-top: 20px;*/
+}
+
+.progress-wrapper {
+  position: relative;
+  /*margin: 20px auto;*/
+}
+
+.current {
+  position: absolute;
+  color: #bbb;
+  font-weight: 100;
+  line-height: 1;
+}
+
+
+/*round-progress {*/
+/*  margin: auto;*/
+/*}*/
+
+.Yellow, .YellowShooting {
+  color: yellow;
+}
+
+.Blue {
+  color: blue;
+}
+
+.Turquoise, .TurquoiseShooting {
+  color: turquoise;
+}
+
+.Purple, .PurpleShooting {
+  color: purple;
+}
+
+.Red, .RedShooting{
+  color: red;
+}
+
+.Green, .GreenShooting {
+  color: green;
+}
+
+.SilverShooting {
+  color: silver;
+}
+
+.done-icon {
+  color: green;
+}
+
+.clear-icon {
+  color: red;
+}
+
+#store-anchor {
+  color: #61878b;
 }

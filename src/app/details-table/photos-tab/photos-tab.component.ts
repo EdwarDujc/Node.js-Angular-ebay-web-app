@@ -10,6 +10,7 @@ export class PhotosTabComponent implements OnChanges {
   @Input() photos: any;
 
   private displayWidth: number;
+  private showphoto = true;
 
   private resized = false;
   private col1 = [];
@@ -19,7 +20,7 @@ export class PhotosTabComponent implements OnChanges {
   constructor() {}
 
   ngOnChanges() {
-    // console.log('photo data in photo-tab.ts: ', this.photos);
+    console.log('photo data in photo-tab.ts: ', this.photos);
     try {
       this.displayWidth = window.screen.width;
       if (this.displayWidth > 600) {
@@ -40,7 +41,8 @@ export class PhotosTabComponent implements OnChanges {
         }
       }
     } catch (err) {
-      // console.log('catch error: ', err);
+      console.log('catch error: ', err);
+      this.photos = false;
       return;
     }
   }

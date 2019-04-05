@@ -125,6 +125,12 @@ export class ResultsTableComponent implements OnInit {
           } catch {
             item['sellerInfo'] = '';
           }
+          try {
+            item['storeInfo'] = items[i]['storeInfo'];
+            // console.log('storeInfo:', items[i]['storeInfo']);
+          } catch {
+            item['storeInfo'] = '';
+          }
 
           this.resultJson.push(item);
         }
@@ -150,7 +156,7 @@ export class ResultsTableComponent implements OnInit {
     this.dService.retrieveDetails(item['itemId']);
     this.dService.retrievePhotos(item['full_title']);
     this.dService.retrieveShippingInfo(item['shippinginfo'], item['returnsAccepted']);
-    this.dService.retrieveSellerInfo(item['sellerInfo']);
+    this.dService.retrieveSellerInfo(item);
   }
 
   goPreviousPage() {

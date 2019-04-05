@@ -66,7 +66,6 @@ export class DetailsService {
       data => {
         this.pService.setShowProgress(false);
         this.pService.setProgress(0);
-
         this.photoJsonData = data;
         // console.log('photo data in detail service: ', data);
         this.subPhotos.next(this.photoJsonData);
@@ -94,13 +93,13 @@ export class DetailsService {
         tmpJson['shippingInfo']['shippingCost'] = '$' + shippingInfo['shippingServiceCost'][0]['__value__'];
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['shippingInfo']['shippingCost'] = false;
     }
     try {
       tmpJson['shippingInfo']['shippingLocation'] = shippingInfo['shipToLocations'][0];
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['shippingInfo']['shippingLocation'] = false;
     }
     try {
@@ -110,19 +109,19 @@ export class DetailsService {
         tmpJson['shippingInfo']['handlingTime'] = shippingInfo['handlingTime'][0] + ' Days';
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['shippingInfo']['handlingTime'] = false;
     }
     try {
       tmpJson['shippingInfo']['expeditedShipping'] = shippingInfo['expeditedShipping'][0];
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['shippingInfo']['expeditedShipping'] = '';
     }
     try {
       tmpJson['shippingInfo']['oneDayShippingAvailable'] = shippingInfo['oneDayShippingAvailable'][0];
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['shippingInfo']['oneDayShippingAvailable'] = '';
     }
     // console.log('tmpjson: ', tmpJson);
@@ -131,13 +130,58 @@ export class DetailsService {
     this.shippingSearchResults = tmpJson;
   }
 
-  retrieveSellerInfo(sellerInfo) {
+  retrieveSellerInfo(item) {
     const tmpJson = {};
+    const sellerInfo = item['sellerInfo'];
+    // console.log('retrieveSellerInfo: item', item);
     try {
       tmpJson['feedbackScore'] = sellerInfo[0]['feedbackScore'];
+      const feedbackScoreInt = +tmpJson['feedbackScore'];
+      if (feedbackScoreInt >= 10000) {
+        tmpJson['useStars'] = true;
+        tmpJson['useStarBorder'] = false;
+      } else if (feedbackScoreInt >= 0 && feedbackScoreInt < 9) {
+        tmpJson['useStars'] = false;
+        tmpJson['useStarBorder'] = false;
+      } else {
+        tmpJson['useStars'] = false;
+        tmpJson['useStarBorder'] = true;
+      }
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       tmpJson['feedbackScore'] = '';
+      tmpJson['useStars'] = false;
+      tmpJson['useStarBorder'] = false;
+    }
+    try {
+      tmpJson['positiveFeedbackPercent'] = sellerInfo[0]['positiveFeedbackPercent'];
+    } catch (e) {
+      // console.log(e);
+      tmpJson['positiveFeedbackPercent'] = '';
+    }
+    try {
+      tmpJson['feedbackRatingStar'] = sellerInfo[0]['feedbackRatingStar'];
+    } catch (e) {
+      // console.log(e);
+      tmpJson['feedbackRatingStar'] = '';
+    }
+    try {
+      tmpJson['topRatedSeller'] = sellerInfo[0]['topRatedSeller'][0];
+    } catch (e) {
+      // console.log(e);
+      tmpJson['topRatedSeller'] = '';
+    }
+    try {
+      tmpJson['storeName'] = item['storeInfo'][0]['storeName'][0];
+    } catch (e) {
+      // console.log(e);
+      tmpJson['storeName'] = '';
+    }
+    try {
+      tmpJson['storeURL'] = item['storeInfo'][0]['storeURL'][0];
+    } catch (e) {
+      // console.log(e);
+      tmpJson['storeURL'] = '';
     }
 
 

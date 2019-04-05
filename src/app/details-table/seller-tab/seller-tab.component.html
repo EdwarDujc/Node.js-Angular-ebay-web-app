@@ -7,20 +7,71 @@
     <tr *ngIf="seller['feedbackScore']">
       <th scope="row">Feedback Score</th>
       <td>
-        <div class="inside-text" ng-reflect-ng-style="[object Object]">{{seller['feedbackScore']}}</div>
-        <round-progress
-          [current]="seller['feedbackScore']"
-          [max]="100"
-          [color]="'#167a14'"
-          [background]="'#eaeaea'"
-          [radius]="18"
-          [stroke]="3"
-          [rounded]="true"
-          [clockwise]="false"
-          [responsive]="false"
-          [duration]="800"
-          [animation]="'easeInOutQuart'"
-          [animationDelay]="0"></round-progress>
+        {{seller['feedbackScore']}}
+      </td>
+    </tr>
+    <tr *ngIf="seller['positiveFeedbackPercent']">
+      <th scope="row">Popularity</th>
+      <td>
+        <div class="progress-wrapper">
+          <div class="current" [ngStyle]="getOverlayStyle()">{{seller['positiveFeedbackPercent']}}</div>
+          <round-progress
+            [current]="seller['positiveFeedbackPercent']"
+            [max]="100"
+            [stroke]="3"
+            [radius]="radius"
+            [semicircle]="semicircle"
+            [rounded]="rounded"
+            [responsive]="responsive"
+            [clockwise]="clockwise"
+            [color]="'#167a14'"
+            [background]="background"
+            [duration]="duration"
+            [animation]="animation"
+            [animationDelay]="animationDelay">
+          </round-progress>
+        </div>
+      </td>
+    </tr>
+    <tr *ngIf="seller['useStars']">
+      <th scope="row">Feedback Rating Star</th>
+      <td>
+        <i class="material-icons {{seller['feedbackRatingStar']}}">
+          stars
+        </i>
+      </td>
+    </tr>
+    <tr *ngIf="seller['useStarBorder']">
+      <th scope="row">Feedback Rating Star</th>
+      <td>
+        <i class="material-icons {{seller['feedbackRatingStar']}}">
+          star_border
+        </i>
+      </td>
+    </tr>
+    <tr *ngIf="seller['topRatedSeller']">
+      <th scope="row">Top Rated</th>
+      <td *ngIf="seller['topRatedSeller'] === 'true'">
+        <i class="material-icons done-icon">
+          done
+        </i>
+      </td>
+      <td *ngIf="seller['topRatedSeller'] === 'false'">
+        <i class="material-icons clear-icon">
+          clear
+        </i>
+      </td>
+    </tr>
+    <tr *ngIf="seller['storeName']">
+      <th scope="row">Store Name</th>
+      <td>
+        {{seller['storeName']}}
+      </td>
+    </tr>
+    <tr *ngIf="seller['storeURL']">
+      <th scope="row">Buy Product At</th>
+      <td>
+        <a id="store-anchor" role="button" (click)="openTab(seller['storeURL'])">Store</a>
       </td>
     </tr>
   </table>

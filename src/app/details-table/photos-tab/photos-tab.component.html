@@ -1,5 +1,5 @@
 <div id="photos-div">
-  <div class="photos-container" *ngIf="photos['ack']=='success'" class="row">
+  <div class="photos-container" *ngIf="photos" class="row">
     <div id="photo-col-1" class="col-sm-4 photo-col">
       <div *ngIf="col1">
         <a *ngFor="let photo of col1" [href]=photo target="_blank">
@@ -20,5 +20,5 @@
       </a></div>
     </div>
   </div>
-  <div class="alert alert-warning" role="alert" *ngIf="!photos || photos['ack']=='failure'">No photos!</div>
+  <div class="alert alert-warning" role="alert" *ngIf="!photos">No photos!</div>
 </div>
