@@ -7,22 +7,37 @@
       </select>
     </div>
     <div class="col-sm-2">
-      <select class="custom-select" name="order-type" id="order-type" [(ngModel)]="selectedOrderType" (change)="setOrderType($event.target.value)">
+      <select class="custom-select" name="order-type" id="order-type" [(ngModel)]="selectedOrderType" (change)="setOrderType($event.target.value)" [disabled]="!orderKeyEnabled">
         <option *ngFor="let type of orderTypes" [value]="type">{{type}}</option>
       </select>
     </div>
+  </div>
 
   <div class="container">
     <div class="row">
-      <table class="table">
+      <table id="similar-table" class="table table-dark" *ngIf="items">
         <tbody>
-        <tr *ngFor="let game of games | orderBy: selectedKeyType : reverse | filter:filter; let i = index">
-          <td>{{i}}</td>
-          <td>{{game.name}}</td>
-          <td>{{game.genre}}</td>
-        </tr>
+          <tr *ngFor="let item of items | orderBy: OrderKey : reverse | filter:filter; let i = index">
+            <td>
+              <a href="{{item['image']}}" target="_blank">
+                <img src="{{item['image']}}" alt="icon" class="category-cion">
+              </a>
+            </td>
+            <td>
+              <a class="title-anchor" role="button" (click)="openTab(item['viewItemURL'])">
+                <p class="p-title">{{item['title']}}</p>
+              </a>
+              <p class="p-price">Price: ${{item['price']}}</p>
+              <p class="p-shippingCost">Shipping Cost: ${{item['shippingCost']}}</p>
+              <p class="p-daysLeft">Days Left: {{item['daysLeft']}}</p>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!items">
+      No Records.
+    </div>
   </div>
+
 </div>

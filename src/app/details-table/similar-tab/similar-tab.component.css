@@ -1,0 +1,36 @@
+.p-title {
+  color: #61878b;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.p-price {
+ color: #829a7f;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.p-shippingCost {
+  color: #ac9b64;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.p-daysLeft {
+  color: white;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+#similar-table {
+  text-align: left;
+}
+
+tr {
+  border: 8px solid white;
+}
+
+img {
+  width: 120px;
+  height: 120px;
+}
