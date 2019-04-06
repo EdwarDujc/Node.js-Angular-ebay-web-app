@@ -15,7 +15,7 @@ import { trigger, state, style, transition, animate} from '@angular/animations';
       ]),
       transition('* => left', [
         style({left: '-100%'}),
-        animate('1s ease-in', style({left: 0}))
+        animate('.5s ease-in', style({left: 0}))
       ]),
     ])
   ]
@@ -48,12 +48,14 @@ export class ResultsDivComponent implements OnInit {
     this.isShowResult = true;
     this.resultShowClass = 'btn btn-dark';
     this.favoriteShowClass = 'btn btn-light';
+    this.active = 'right';
   }
 
   showFavorite() {
     this.clear = false;
     this.isShowResult = false;
     this.isShowFavorite = true;
+    this.active = 'right';
     this.resultShowClass = 'btn btn-light';
     this.favoriteShowClass = 'btn btn-dark';
   }

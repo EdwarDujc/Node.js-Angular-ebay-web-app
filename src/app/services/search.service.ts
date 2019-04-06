@@ -58,7 +58,7 @@ export class SearchService {
         this.pService.setProgress(0);
 
         this.jsonData = data;
-        console.log('search data: ', data);
+        // console.log('search data: ', data);
         this.subIsDataGet.next(true);
         this.subResultJson.next(this.jsonData);
         this.searchResults = data['findItemsAdvancedResponse'];

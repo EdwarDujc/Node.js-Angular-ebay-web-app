@@ -2,7 +2,12 @@
   No Records.
 </div>
 <div id="results-div" *ngIf="showResult && !error" class="table-responsive">
-  <table id="results-div-table" class="table table-dark table-striped" *ngIf="resultJson && resultJson != 'loading'">
+  <div class="right">
+    <button class="btn btn-light" id="button-details" (click)="goDetailsPage()" [disabled]="!detailButtonEnabled">
+      Detail<i class="material-icons">navigate_next</i>
+    </button>
+  </div>
+  <table id="results-div-table" class="table table-hover table-secondary table-dark table-striped" *ngIf="resultJson && resultJson != 'loading'">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -16,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of resultJson | paginate: { itemsPerPage: 10, currentPage: currentPage }; let i = index;">
+      <tr *ngFor="let item of resultJson | paginate: { itemsPerPage: 10, currentPage: currentPage }; let i = index;" [class.table-secondary]="item['itemId']==selectedId">
         <th scope="row">{{i+1+(currentPage-1)*10}}</th>
         
         <td><img src="{{item['image']}}" alt="icon" class="category-cion"></td>

@@ -20,6 +20,8 @@ export class ResultsTableComponent implements OnInit {
   resultJson = null;
   showNoRecords = false;
   isFavorite: any;
+  selectedId: any;
+  detailButtonEnabled = false;
 
   currentPage = 1;
   totalPage = 0;
@@ -152,7 +154,15 @@ export class ResultsTableComponent implements OnInit {
     console.log('to-implement: add item ', index, 'to wish list');
   }
 
+  goDetailsPage() {
+    // console.log('to implement: slide to Details page');
+    this.slide.emit({ slide: 'left', item: this.selectedId });
+  }
+
   getDetails(item) {
+    this.detailButtonEnabled = true;
+    this.slide.emit({ slide: 'left', item: item['itemId'] });
+    this.selectedId = item['itemId'];
     this.dService.retrieveDetails(item['itemId']);
     this.dService.retrievePhotos(item['full_title']);
     this.dService.retrieveShippingInfo(item['shippinginfo'], item['returnsAccepted']);

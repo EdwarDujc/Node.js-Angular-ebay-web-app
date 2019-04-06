@@ -42,8 +42,9 @@ export class DetailsTableComponent implements OnInit {
     this.currentTab = tabId;
   }
 
-  slideDetail() {
+  goListPage() {
     this.slide.emit('right');
+    // this.slide.emit('left');
   }
 
   setFavorite() {
@@ -51,7 +52,6 @@ export class DetailsTableComponent implements OnInit {
   }
 
   postFacebook() {
-    console.log('to implement: facebook; this.product: ', this.product);
     let url = 'https://www.facebook.com/sharer/sharer.php?u=';
     let productName = '';
     let price = '';
@@ -76,7 +76,7 @@ export class DetailsTableComponent implements OnInit {
     let text = 'Buy ' + productName + ' at ' + price + ' from link below';
     text = encodeURI(text);
     url += link + '&quote=' + text;
-    console.log(url);
+    // console.log(url);
     const newWin = window.open(url);
   }
 

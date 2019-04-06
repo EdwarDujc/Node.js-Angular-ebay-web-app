@@ -31,3 +31,17 @@ button:hover {
 .title-div :hover {
   text-decoration: underline;
 }
+
+i {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.right {
+  float: right;
+  margin-bottom: 20px;
+}
+
+#button-details {
+  text-decoration: none;
+}

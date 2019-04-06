@@ -96,7 +96,7 @@ app.get("/search", function(req, res) {
     //store info
     url += "&outputSelector(1)=StoreInfo";
 
-    console.log(url);
+    // console.log(url);
 
     request(url, function (error, response, body) {
       if (!error && response.statusCode === 200) {
@@ -137,9 +137,8 @@ app.get("/photos", function(req, res) {
   url += req.query.keyword;
   url += "&cx=017030067582812733545:tk2vekergf8&imgSize=huge&imgType=news&num=8&searchType=image&key=AIzaSyClpgG450XgRvNOkY_mdNIc5W0MJgXxlLo";
 
-  console.log(url);
-  //remove!!!!!
-  url = "www.amazon.com";
+  // console.log(url);
+  // url = "www.amazon.com";
 
   request(url, function (error, response, body) {
     if (!error && response.statusCode === 200) {
@@ -159,11 +158,11 @@ app.get("/similar", function(req, res) {
   url += req.query.itemId;
   url += "&maxResults=20";
 
-  console.log(url);
+  // console.log(url);
 
   request(url, function (error, response, body) {
     if (!error && response.statusCode === 200) {
-      console.log(body);
+      // console.log(body);
       res.send(body);
     }
   });
