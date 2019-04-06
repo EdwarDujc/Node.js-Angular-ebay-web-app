@@ -27,6 +27,8 @@ export class ResultsTableComponent implements OnInit {
   totalPage = 0;
   pageIndexArray = [];
 
+  inCart = [];
+
   buttonIndexClass = ['btn btn-dark', 'btn btn-light', 'btn btn-light', 'btn btn-light', 'btn btn-light'];
 
   constructor(private sService: SearchService,
@@ -150,8 +152,15 @@ export class ResultsTableComponent implements OnInit {
     });
   }
 
-  setFavorite(index) {
-    console.log('to-implement: add item ', index, 'to wish list');
+  setCart(index) {
+    console.log('to implement: add item ', index, 'to wish list');
+    if (this.inCart[index]) {
+      this.fService.removeCart(this.resultJson[index]['itemId']);
+      this.inCart[index] = false;
+    } else {
+      this.fService.addCart(this.resultJson[index]);
+      this.inCart[index] = true;
+    }
   }
 
   goDetailsPage() {
@@ -204,6 +213,13 @@ export class ResultsTableComponent implements OnInit {
     this.pageIndexArray = [];
     this.currentPage = 1;
     this.setButtonsClass();
+  }
+
+  checkCart() {
+    if (this.resultJson) {
+      const itemIds = this.resultJson.map(data => data.itemId);
+      this.inCart = this.fService.checkCart(itemIds);
+    }
   }
 
   ngOnInit() {

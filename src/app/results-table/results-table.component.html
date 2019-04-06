@@ -35,9 +35,12 @@
         <td>{{item['zip']}}</td>
         <td>{{item['seller']}}</td>
         <td>
-          <button type="button" class="btn btn-outline" (click)="setFavorite(i)">
-            <i class="material-icons">
+          <button type="button" class="btn btn-outline" (click)="setCart(i)">
+            <i class="material-icons" *ngIf="!inCart[i]">
               add_shopping_cart
+            </i>
+            <i class="material-icons remove-cart-icon" *ngIf="inCart[i]">
+              remove_shopping_cart
             </i>
           </button>
         </td>

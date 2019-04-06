@@ -45,3 +45,7 @@ i {
 #button-details {
   text-decoration: none;
 }
+
+.remove-cart-icon {
+  color: darkgoldenrod;
+}
