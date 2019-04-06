@@ -89,7 +89,7 @@ export class SimilarTabComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    console.log('received similar: ', this.similar);
+    // console.log('received similar: ', this.similar);
     try {
       this.items = [];
       let i = 0;
@@ -139,7 +139,7 @@ export class SimilarTabComponent implements OnChanges {
         }
         this.items.push(tmpJson);
       }
-      console.log('this.items: ', this.items);
+      // console.log('this.items: ', this.items);
     } catch (e) {
       this.items = [];
       this.displayButtonFlag = false;

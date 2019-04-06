@@ -50,8 +50,34 @@ export class DetailsTableComponent implements OnInit {
     console.log('to implement: favorite');
   }
 
-  facebook() {
-    console.log('to implement: facebook');
+  postFacebook() {
+    console.log('to implement: facebook; this.product: ', this.product);
+    let url = 'https://www.facebook.com/sharer/sharer.php?u=';
+    let productName = '';
+    let price = '';
+    let link = '';
+    try {
+      productName = this.product['Item']['Title'];
+    } catch (e) {
+      productName = 'Unknown Title';
+    }
+    try {
+      price = '$' + this.product['Item']['CurrentPrice']['Value'].toString();
+    } catch (e) {
+      console.log(e);
+      price = 'Unknown Price';
+    }
+    try {
+      link = this.product['Item']['ViewItemURLForNaturalSearch'];
+      link = encodeURI(link);
+    } catch (e) {
+      link = 'www.ebay.com';
+    }
+    let text = 'Buy ' + productName + ' at ' + price + ' from link below';
+    text = encodeURI(text);
+    url += link + '&quote=' + text;
+    console.log(url);
+    const newWin = window.open(url);
   }
 
   setProductTab(data) {
@@ -141,25 +167,28 @@ export class DetailsTableComponent implements OnInit {
     private fService: FavoriteService,
     private myZone: NgZone,
   ) {
-    this.dService.details.subscribe(data =>{
+    this.dService.details.subscribe(data => {
       this.myZone.run(() => {
         this.product = data;
+        if (!data) {
+          this.showNoDetails = true;
+        }
         this.setProductTab(data);
       });
     });
-    this.dService.photos.subscribe(data =>{
+    this.dService.photos.subscribe(data => {
       this.myZone.run(() => {
         this.photos = data;
         this.setImageTab(data);
       });
     });
-    this.dService.shipping.subscribe(data =>{
+    this.dService.shipping.subscribe(data => {
       this.myZone.run(() => {
         this.shipping = data;
         this.setShippingTab(data);
       });
     });
-    this.dService.seller.subscribe(data =>{
+    this.dService.seller.subscribe(data => {
       this.myZone.run(() => {
         this.seller = data;
         this.setSellerTab(data);
