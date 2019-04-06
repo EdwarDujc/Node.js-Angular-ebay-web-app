@@ -20,17 +20,11 @@ export class SimilarTabComponent implements OnChanges {
   selectedOrderType = 'Ascending';
 
   reverse = false;
-
-  // -----------------------------------------------------------
-  games = [
-    {
-      "id":"1",
-      "name": "DOTA 2",
-      "genre": "Strategy"
-    },
-  ]
-  // -----------------------------------------------------------
-
+  //show less by default
+  showText = 'Show More';
+  showMoreFlag = false;
+  displayButtonFlag = false;
+  showLimit = 5;
 
   constructor() { }
 
@@ -40,7 +34,7 @@ export class SimilarTabComponent implements OnChanges {
     } else {
       this.reverse = true;
     }
-    console.log('setOrderType to ', deviceValue, this.reverse);
+    // console.log('setOrderType to ', deviceValue, this.reverse);
   }
 
   setKeyType(deviceValue) {
@@ -71,13 +65,27 @@ export class SimilarTabComponent implements OnChanges {
         break;
       }
     }
-    console.log('setKeyType to ', deviceValue, this.OrderKey);
+    // console.log('setKeyType to ', deviceValue, this.OrderKey);
 
   }
 
   openTab(url) {
     const win = window.open(url, '_blank');
     win.focus();
+  }
+
+  changeMoreLess() {
+    // change to show more after clicked
+    if (this.showMoreFlag) {
+      this.showMoreFlag = false;
+      this.showText = 'Show Less';
+      this.showLimit = this.items.length;
+    } else {
+    //  change to show less after clicked
+      this.showMoreFlag = true;
+      this.showText = 'Show More';
+      this.showLimit = 5;
+    }
   }
 
   ngOnChanges() {
@@ -134,7 +142,13 @@ export class SimilarTabComponent implements OnChanges {
       console.log('this.items: ', this.items);
     } catch (e) {
       this.items = [];
+      this.displayButtonFlag = false;
       return;
+    }
+    if (this.items.length > 5) {
+      this.displayButtonFlag = true;
+    } else {
+      this.displayButtonFlag = false;
     }
   }
 

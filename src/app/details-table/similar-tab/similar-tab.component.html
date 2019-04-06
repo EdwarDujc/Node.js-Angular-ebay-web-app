@@ -1,5 +1,4 @@
-<div id="similar-div">
-
+<div id="similar-div" *ngIf="items.length > 0">
   <div class="form-group row">
     <div class="col-sm-2">
       <select class="custom-select" name="key-type" id="key-type" [(ngModel)]="selectedKeyType" (change)="setKeyType($event.target.value)">
@@ -14,30 +13,33 @@
   </div>
 
   <div class="container">
-    <div class="row">
-      <table id="similar-table" class="table table-dark" *ngIf="items">
-        <tbody>
-          <tr *ngFor="let item of items | orderBy: OrderKey : reverse | filter:filter; let i = index">
-            <td>
-              <a href="{{item['image']}}" target="_blank">
-                <img src="{{item['image']}}" alt="icon" class="category-cion">
-              </a>
-            </td>
-            <td>
-              <a class="title-anchor" role="button" (click)="openTab(item['viewItemURL'])">
-                <p class="p-title">{{item['title']}}</p>
-              </a>
-              <p class="p-price">Price: ${{item['price']}}</p>
-              <p class="p-shippingCost">Shipping Cost: ${{item['shippingCost']}}</p>
-              <p class="p-daysLeft">Days Left: {{item['daysLeft']}}</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="alert alert-warning" role="alert" *ngIf="!items">
-      No Records.
-    </div>
+    <table id="similar-table" class="table table-dark" *ngIf="items">
+      <tbody>
+        <tr *ngFor="let item of items | orderBy: OrderKey : reverse | filter:filter; let i = index">
+          <td *ngIf="i < showLimit">
+            <a href="{{item['image']}}" target="_blank">
+              <img src="{{item['image']}}" alt="icon" class="category-cion">
+            </a>
+          </td>
+          <td *ngIf="i < showLimit">
+            <a class="title-anchor" role="button" (click)="openTab(item['viewItemURL'])">
+              <p class="p-title">{{item['title']}}</p>
+            </a>
+            <p class="p-price">Price: ${{item['price']}}</p>
+            <p class="p-shippingCost">Shipping Cost: ${{item['shippingCost']}}</p>
+            <p class="p-daysLeft">Days Left: {{item['daysLeft']}}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
+  <span>
+    <button class="btn btn-dark" (click)="changeMoreLess()" *ngIf="displayButtonFlag">{{showText}}</button>
+  </span>
+
+</div>
+
+<div class="alert alert-warning" role="alert" *ngIf="items.length == 0">
+  No Records.
 </div>
