@@ -8,11 +8,12 @@
   <app-processing-bar></app-processing-bar>
   <div id="slide-container" [@slideAnimation]="active" class="container" *ngIf="!clear">
     <div class="slide-div" [class.hide]="active == 'right'">
-      <div>
+    <div>
         <app-details-table (slide)="slideRight($event)"></app-details-table>
       </div>
     </div>
-    <div class="slide-div" [class.hide]="active == 'left'">
+<!--    <div class="slide-div" [class.hide]="active == 'left'">-->
+    <div class="slide-div" [class.hide]="active != 'right'">
       <div>
         <app-results-table (slide)="slideLeft($event)" [class.hide]="!isShowResult"></app-results-table>
         <app-favorite-list (slide)="slideLeft($event)" [class.hide]="!isShowFavorite"></app-favorite-list>

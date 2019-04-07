@@ -45,7 +45,6 @@ export class DetailsTableComponent implements OnInit {
 
   goListPage() {
     this.slide.emit('right');
-    // this.slide.emit('left');
   }
 
   setCart() {
@@ -228,7 +227,7 @@ export class DetailsTableComponent implements OnInit {
         this.setSellerTab(data);
       });
     });
-    this.dService.similar.subscribe(data =>{
+    this.dService.similar.subscribe(data => {
       this.myZone.run(() => {
         this.similar = data;
         this.setSimilarTab(data);
