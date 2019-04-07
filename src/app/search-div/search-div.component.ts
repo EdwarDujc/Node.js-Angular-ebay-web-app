@@ -72,7 +72,7 @@ export class SearchDivComponent implements OnInit {
 
   ngOnInit() {
     this.getHereZipcode();
-    this.form.keyword = 'iphone';
+    // this.form.keyword = 'iphone'; //for test only
   }
 
   onSubmit() {

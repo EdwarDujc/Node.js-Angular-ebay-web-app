@@ -52,7 +52,7 @@ export class DetailsTableComponent implements OnInit {
   setCart() {
     this.myZone.run(() => {
       if (this.isInCart) {
-        console.log('to remove: ', this.product['Item']['ItemID']);
+        // console.log('to remove: ', this.product['Item']['ItemID']);
         this.fService.removeCart(this.product['Item']['ItemID']);
         this.isInCart = false;
       } else {
