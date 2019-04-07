@@ -99,12 +99,12 @@
               </div>
               <input [ngClass]="{'form-control': true, 'is-invalid': location.invalid && (location.dirty || location.touched)}" type="text"
                        id="user_zipcode" name="user_zipcode" required checkZipcode [disabled]="!form.zipcodeCustom"  [(ngModel)]="form.userZipcode"
-                       #location="ngModel" [matAutocomplete]="auto">
+                       #location="ngModel" [matAutocomplete]="auto" (ngModelChange)="getZipcodeSuggestion($event)">
               <div class="invalid-feedback">Please enter a zip code</div>
 
 
               <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of options" [value]="option">
+                <mat-option *ngFor="let option of zipOptions" [value]="option">
                   {{option}}
                 </mat-option>
               </mat-autocomplete>

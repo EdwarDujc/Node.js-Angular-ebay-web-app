@@ -13,8 +13,7 @@ import { Observable} from 'rxjs';
 })
 export class SearchDivComponent implements OnInit {
 
-  constructor(private myService: SearchService, cdRef: ChangeDetectorRef, private formBuilder: FormBuilder) {
-  }
+  constructor(private myService: SearchService, cdRef: ChangeDetectorRef, private formBuilder: FormBuilder) {}
   userZipcode = '';
   hereZipcode = '';
   gotZipcode = false;
@@ -38,7 +37,7 @@ export class SearchDivComponent implements OnInit {
     'Video Games & Consoles'
   ];
 
-  options = ['90007', '92501', '43000'];
+  zipOptions = [];
 
   getHereZipcode() {
     this.myService.getHereZipcode().subscribe(data => {
@@ -50,6 +49,25 @@ export class SearchDivComponent implements OnInit {
     // this.form.hereZipcode = this.hereZipcode;
     // this.gotZipcode = true;
     // console.log('this.hereZipcode: ', this.hereZipcode);
+  }
+
+  getZipcodeSuggestion(zip) {
+    if (zip === '') {
+      this.zipOptions = [];
+      return;
+    }
+    this.myService.getZipcodeSuggestion(zip).subscribe(data => {
+      // console.log(data);
+      this.zipOptions = [];
+      try {
+        for (let z of data['postalCodes']) {
+          this.zipOptions.push(z['postalCode']);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+      // console.log('zipOptions:', this.zipOptions);
+    });
   }
 
   ngOnInit() {

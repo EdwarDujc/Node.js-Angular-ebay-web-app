@@ -21,6 +21,9 @@ export class SearchService {
   private subResultJson = new Subject();
   resultJson = this.subResultJson.asObservable();
 
+  // private subZipSuggest = new Subject();
+  // zipSuggestJson = this.zipSuggestJson.asObservable();
+
   private searchResults: any;
 
   constructor(private http: HttpClient, private pService: ProcessingBarService) {}
@@ -29,6 +32,12 @@ export class SearchService {
   getHereZipcode() {
     const url = 'http://ip-api.com/json';
     return this.http.get(url);
+  }
+
+  getZipcodeSuggestion(zip) {
+    const params = new HttpParams().set('zipcode', zip);
+    const response = this.http.get(this.url + '/zipcode', { params });
+    return response;
   }
 
   search(form) {

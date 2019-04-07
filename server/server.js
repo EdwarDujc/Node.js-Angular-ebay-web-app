@@ -168,6 +168,26 @@ app.get("/similar", function(req, res) {
   });
 });
 
+app.get("/zipcode", function(req, res) {
+  var response;
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  res.setHeader("Access-Control-Allow-Origin", FrontUrl);
+  // console.log(req.query);
+
+  var url = 'http://api.geonames.org/postalCodeSearchJSON?postalcode_startsWith=';
+  url += req.query.zipcode;
+  url += "&username=edwardcsci571&country=US&maxRows=5";
+
+  // console.log(url);
+
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      // console.log(body);
+      res.send(body);
+    }
+  });
+});
+
 app.use(express.static("dist"));
 
 var server = app.listen(8081, function() {
