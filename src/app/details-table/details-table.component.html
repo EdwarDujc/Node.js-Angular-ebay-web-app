@@ -46,12 +46,12 @@
          data-toggle="tab" [attr.aria-controls]="tabs[i].id+'-panel'" (click)="setTab(tabs[i].id)">{{tabs[i].title}}</a>
       <a href="#" [id]="'similar-tab'" class="nav-item nav-link" [class.active]="'similar-tab' === currentTab" role="tab"
          data-toggle="tab" [attr.aria-controls]="'similar-tab'+'-panel'" (click)="setTab('similar-tab')">
-        <p id="similar-desktop">
+        <div id="similar-desktop">
           Similar Products
-        </p>
-        <p id="similar-mobile">
+        </div>
+        <div id="similar-mobile">
           Related
-        </p>
+        </div>
       </a>
 
     </div>
