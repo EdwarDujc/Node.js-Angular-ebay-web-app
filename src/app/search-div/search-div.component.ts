@@ -64,7 +64,7 @@ export class SearchDivComponent implements OnInit {
           this.zipOptions.push(z['postalCode']);
         }
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
       // console.log('zipOptions:', this.zipOptions);
     });

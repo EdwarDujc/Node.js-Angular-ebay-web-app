@@ -85,7 +85,7 @@ export class ResultsTableComponent implements OnInit {
             }
             item['title'] = tmpTitle;
           } catch (err) {
-            console.log('error:', err);
+            // console.log('error:', err);
             item['title'] = 'N.A.';
             item['full_title'] = 'N.A.';
           }

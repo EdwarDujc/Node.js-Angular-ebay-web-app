@@ -72,7 +72,7 @@ export class DetailsTableComponent implements OnInit {
           }
           tmpJson['title'] = tmpTitle;
         } catch (err) {
-          console.log('error:', err);
+          // console.log('error:', err);
           tmpJson['title'] = 'N.A.';
           tmpJson['full_title'] = 'N.A.';
         }
@@ -98,7 +98,7 @@ export class DetailsTableComponent implements OnInit {
     try {
       price = '$' + this.product['Item']['CurrentPrice']['Value'].toString();
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       price = 'Unknown Price';
     }
     try {
@@ -121,8 +121,8 @@ export class DetailsTableComponent implements OnInit {
     try {
       item = data['Item'];
     } catch (err) {
-      console.log(err);
-      console.log('no info found for this item');
+      // console.log(err);
+      // console.log('no info found for this item');
       tmpJson['ack'] = 'failure';
       this.productJson = tmpJson;
       return;
@@ -130,25 +130,25 @@ export class DetailsTableComponent implements OnInit {
     try {
       tmpJson['productImgUrls'] = item['PictureURL'];
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['productImgUrls'] = false;
     }
     try {
       tmpJson['subtitle'] = item['Subtitle'];
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['subtitle'] = false;
     }
     try {
       tmpJson['price'] = '$'+item['CurrentPrice']['Value'];
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['price'] = false;
     }
     try {
       tmpJson['location'] = item['Location'];
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['location'] = false;
     }
     try {
@@ -158,13 +158,13 @@ export class DetailsTableComponent implements OnInit {
         tmpJson['returnPolicy'] = item['ReturnPolicy']['ReturnsAccepted'] + ' within ' + item['ReturnPolicy']['ReturnsWithin'];
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['returnPolicy'] = 'Returns Not Accepted';
     }
     try {
       tmpJson['itemSpecifics'] = item['ItemSpecifics']['NameValueList'];
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['itemSpecifics'] = [];
     }
     this.productJson = tmpJson;
@@ -178,7 +178,7 @@ export class DetailsTableComponent implements OnInit {
       // console.log("data in setImageTab: ", data);
       // console.log("data[items] in setImageTab: ", data['items']);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       tmpJson['items'] = [];
     }
     this.photosJson = tmpJson;

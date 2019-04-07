@@ -73,7 +73,7 @@ export class SearchService {
         this.searchResults = data['findItemsAdvancedResponse'];
       },
       err => {
-        console.log(err);
+        // console.log(err);
       }
     );
   }

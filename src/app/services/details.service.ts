@@ -61,7 +61,7 @@ export class DetailsService {
         this.detailSearchResults = data;
       },
       err => {
-        console.log(err);
+        // console.log(err);
       }
     );
   }
@@ -81,7 +81,7 @@ export class DetailsService {
         this.photoSearchResults = data;
       },
       err => {
-        console.log(err);
+        // console.log(err);
       }
     );
   }
@@ -212,7 +212,7 @@ export class DetailsService {
         this.similarSearchResults = data;
       },
       err => {
-        console.log(err);
+        // console.log(err);
       }
     );
   }
