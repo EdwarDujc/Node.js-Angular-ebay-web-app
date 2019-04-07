@@ -2,7 +2,9 @@ import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@ang
 import {SearchForm} from './search_form';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import {SearchService} from '../services/search.service';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Observable} from 'rxjs';
+
 
 @Component({
   selector: 'app-search-div',
@@ -36,6 +38,8 @@ export class SearchDivComponent implements OnInit {
     'Video Games & Consoles'
   ];
 
+  options = ['90007', '92501', '43000'];
+
   getHereZipcode() {
     this.myService.getHereZipcode().subscribe(data => {
       this.hereZipcode = data["zip"];
@@ -46,7 +50,6 @@ export class SearchDivComponent implements OnInit {
     // this.form.hereZipcode = this.hereZipcode;
     // this.gotZipcode = true;
     // console.log('this.hereZipcode: ', this.hereZipcode);
-
   }
 
   ngOnInit() {

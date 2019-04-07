@@ -97,11 +97,18 @@
                   Other. Please specify zip code:
                 </label>
               </div>
-<!--              <input type="text" class="form-control" id="user_zipcode" name="user_zipcode" [(ngModel)]="form.userZipcode">-->
-                <input [ngClass]="{'form-control': true, 'is-invalid': location.invalid && (location.dirty || location.touched)}" type="text"
+              <input [ngClass]="{'form-control': true, 'is-invalid': location.invalid && (location.dirty || location.touched)}" type="text"
                        id="user_zipcode" name="user_zipcode" required checkZipcode [disabled]="!form.zipcodeCustom"  [(ngModel)]="form.userZipcode"
-                       #location="ngModel">
-                <div class="invalid-feedback">Please enter a zip code</div>
+                       #location="ngModel" [matAutocomplete]="auto">
+              <div class="invalid-feedback">Please enter a zip code</div>
+
+
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+
             </div>
           </div>
         </fieldset>

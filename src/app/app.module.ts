@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 // component
 import { AppComponent } from './app.component';
 import { SearchDivComponent } from './search-div/search-div.component';
@@ -35,6 +36,7 @@ import { PhotosTabComponent } from './details-table/photos-tab/photos-tab.compon
 import { ShippingTabComponent } from './details-table/shipping-tab/shipping-tab.component';
 import { SellerTabComponent } from './details-table/seller-tab/seller-tab.component';
 import { SimilarTabComponent } from './details-table/similar-tab/similar-tab.component';
+import {MatFormFieldModule} from '@angular/material';
 
 
 
@@ -70,7 +72,9 @@ import { SimilarTabComponent } from './details-table/similar-tab/similar-tab.com
     NgbModule,
     RoundProgressModule,
     Ng2SearchPipeModule,
-    Ng2OrderModule
+    Ng2OrderModule,
+    MatAutocompleteModule,
+    MatFormFieldModule
   ],
   providers: [
     SearchService,
