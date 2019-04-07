@@ -30,10 +30,30 @@ img {
   color: white;
 }
 
+.nav-item {
+  height: 50px;
+}
+
+#similar-mobile {
+  display: none;
+}
+
+#similar-desktop {
+  display: block;
+}
+
 @media (max-width: 600px) {
   .nav-tabs {
     display: -webkit-inline-box;
     display: -moz-box;
+  }
+
+  #similar-mobile {
+    display: block;
+  }
+
+  #similar-desktop {
+    display: none;
   }
 }
 

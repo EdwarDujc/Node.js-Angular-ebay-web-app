@@ -21,6 +21,8 @@ export class DetailsTableComponent implements OnInit {
     { id: 'similar-tab', title: 'Similar Products'}
   ];
 
+  tabIndex = [0, 1, 2, 3];
+
   @Output() slide = new EventEmitter<string>();
   showNoDetails = false;
   product: any;

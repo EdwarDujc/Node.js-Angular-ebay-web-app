@@ -38,8 +38,22 @@
 
   <div id="nav-div1">
     <div class="nav nav-pills justify-content-end" id="nav-pills" role="tablist">
-      <a href="#" *ngFor="let tab of tabs" [id]="tab.id" class="nav-item nav-link" [class.active]="tab.id === currentTab" role="tab"
-         data-toggle="tab" [attr.aria-controls]="tab.id+'-panel'" (click)="setTab(tab.id)">{{tab.title}}</a>
+
+      <!--      <a href="#" *ngFor="let tab of tabs" [id]="tab.id" class="nav-item nav-link" [class.active]="tab.id === currentTab" role="tab"-->
+<!--         data-toggle="tab" [attr.aria-controls]="tab.id+'-panel'" (click)="setTab(tab.id)">{{tab.title}}</a>-->
+
+      <a href="#" *ngFor="let i of tabIndex" [id]="tabs[i].id" class="nav-item nav-link" [class.active]="tabs[i].id === currentTab" role="tab"
+         data-toggle="tab" [attr.aria-controls]="tabs[i].id+'-panel'" (click)="setTab(tabs[i].id)">{{tabs[i].title}}</a>
+      <a href="#" [id]="'similar-tab'" class="nav-item nav-link" [class.active]="'similar-tab' === currentTab" role="tab"
+         data-toggle="tab" [attr.aria-controls]="'similar-tab'+'-panel'" (click)="setTab('similar-tab')">
+        <p id="similar-desktop">
+          Similar Products
+        </p>
+        <p id="similar-mobile">
+          Related
+        </p>
+      </a>
+
     </div>
   </div>
 
