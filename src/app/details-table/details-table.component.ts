@@ -28,6 +28,7 @@ export class DetailsTableComponent implements OnInit {
   shipping: any;
   seller: any;
   similar: any;
+  isInCart;
 
   private currentTab = 'product-tab';
 
@@ -47,8 +48,40 @@ export class DetailsTableComponent implements OnInit {
     // this.slide.emit('left');
   }
 
-  setFavorite() {
-    console.log('to implement: favorite');
+  setCart() {
+    this.myZone.run(() => {
+      if (this.isInCart) {
+        console.log('to remove: ', this.product['Item']['ItemID']);
+        this.fService.removeCart(this.product['Item']['ItemID']);
+        this.isInCart = false;
+      } else {
+        let tmpJson = {};
+        tmpJson['itemId'] = this.product['Item']['ItemID'];
+        tmpJson['image'] = this.product['Item']['GalleryURL'];
+        try {
+          tmpJson['full_title'] = this.product['Item']['Title'];
+          let tmpTitle = tmpJson['full_title'];
+          if (tmpTitle.length > 35) {
+            let cutIndex = 34;
+            while (cutIndex >= 0 && tmpTitle.charAt(cutIndex) !== ' ') {
+              cutIndex--;
+            }
+            tmpTitle = tmpTitle.slice(0, cutIndex);
+            tmpTitle += '...';
+          }
+          tmpJson['title'] = tmpTitle;
+        } catch (err) {
+          console.log('error:', err);
+          tmpJson['title'] = 'N.A.';
+          tmpJson['full_title'] = 'N.A.';
+        }
+        tmpJson['price'] = '$'+this.product['Item']['CurrentPrice']['Value'];
+        tmpJson['seller'] = this.product['Item']['Seller']['UserID'];
+        tmpJson['shipping'] = '666';
+        this.fService.addCart(tmpJson);
+        this.isInCart = true;
+      }
+    });
   }
 
   postFacebook() {
@@ -174,6 +207,7 @@ export class DetailsTableComponent implements OnInit {
           this.showNoDetails = true;
         }
         this.setProductTab(data);
+        this.isInCart = this.fService.checkCart([data['Item']['ItemID']])[0];
       });
     });
     this.dService.photos.subscribe(data => {

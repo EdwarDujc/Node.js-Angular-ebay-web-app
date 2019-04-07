@@ -17,8 +17,16 @@
       <button class="btn btn-light" id="button-facebook" (click)="postFacebook()">
         <img src="http://csci571.com/hw/hw8/Images/facebook.png">
       </button>
-      <button class="btn btn-light" id="button-favor">
-        <i class="material-icons">
+<!--      <button class="btn btn-light" id="button-favor">-->
+<!--        <i class="material-icons">-->
+<!--          remove_shopping_cart-->
+<!--        </i>-->
+<!--      </button>-->
+      <button type="button" class="btn btn-outline" (click)="setCart()">
+        <i class="material-icons" *ngIf="!isInCart">
+          add_shopping_cart
+        </i>
+        <i class="material-icons remove-cart-icon" *ngIf="isInCart">
           remove_shopping_cart
         </i>
       </button>

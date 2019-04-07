@@ -56,7 +56,7 @@ export class DetailsService {
         this.pService.setProgress(0);
 
         this.detailJsonData = data;
-        // console.log('product data: ', data);
+        console.log('product data: ', data);
         this.subDetails.next(this.detailJsonData);
         this.detailSearchResults = data;
       },

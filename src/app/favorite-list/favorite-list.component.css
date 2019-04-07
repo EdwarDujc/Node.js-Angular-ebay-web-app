@@ -1,0 +1,26 @@
+i {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.right {
+  float: right;
+  margin-bottom: 20px;
+}
+
+.remove-cart-icon {
+  color: darkgoldenrod;
+}
+
+.title-div {
+  color: dodgerblue;
+}
+
+#cart-div {
+  text-align: left;
+}
+
+img {
+  width: 120px;
+  height: 120px;
+}

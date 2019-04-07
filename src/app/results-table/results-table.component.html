@@ -24,7 +24,12 @@
       <tr *ngFor="let item of resultJson | paginate: { itemsPerPage: 10, currentPage: currentPage }; let i = index;" [class.table-secondary]="item['itemId']==selectedId">
         <th scope="row">{{i+1+(currentPage-1)*10}}</th>
         
-        <td><img src="{{item['image']}}" alt="icon" class="category-cion"></td>
+        <td>
+          <a href="{{item['image']}}" target="_blank">
+            <img src="{{item['image']}}" alt="icon" class="category-cion">
+          </a>
+<!--          <img src="{{item['image']}}" alt="icon" class="category-cion">-->
+        </td>
         <td>
           <div matTooltip="{{item['full_title']}}" matTooltipPosition="below" class="title-div">
             <a role="button" (click)="getDetails(item)">{{item['title']}}</a>

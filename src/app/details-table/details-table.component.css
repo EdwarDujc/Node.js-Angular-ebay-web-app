@@ -36,3 +36,7 @@ img {
     display: -moz-box;
   }
 }
+
+.remove-cart-icon {
+  color: darkgoldenrod;
+}

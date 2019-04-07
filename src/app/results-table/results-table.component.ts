@@ -144,16 +144,20 @@ export class ResultsTableComponent implements OnInit {
         for (let i = 0; i < this.totalPage; i++) {
           this.pageIndexArray.push(i + 1);
         }
-        }
+        this.checkCart();
+      }
       // console.log('showNoRecords: ', this.showNoRecords);
       // console.log('showResult: ', this.showResult);
       // console.log('error: ', this.error);
       // console.log('data in results-table.component.ts: ', data);
     });
+
+    this.fService.wishListChange.subscribe(data => {
+      this.checkCart();
+    });
   }
 
   setCart(index) {
-    console.log('to implement: add item ', index, 'to wish list');
     if (this.inCart[index]) {
       this.fService.removeCart(this.resultJson[index]['itemId']);
       this.inCart[index] = false;
@@ -164,7 +168,6 @@ export class ResultsTableComponent implements OnInit {
   }
 
   goDetailsPage() {
-    // console.log('to implement: slide to Details page');
     this.slide.emit({ slide: 'left', item: this.selectedId });
   }
 
