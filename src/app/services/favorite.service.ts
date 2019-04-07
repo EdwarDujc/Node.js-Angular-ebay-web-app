@@ -25,7 +25,7 @@ export class FavoriteService {
   }
 
   addCart(item) {
-    console.log('item to add: ', item);
+    // console.log('item to add: ', item);
     localStorage.setItem(item['itemId'], JSON.stringify(item));
     this.retrieveCart();
   }

@@ -21,8 +21,11 @@ export class FavoriteListComponent implements OnInit {
     let currentPrice = 0;
     for (const item of this.inCartItems) {
       const p = item['price'].slice(1);
-      console.log('price: ', p);
-      currentPrice += +p;
+      try {
+        currentPrice += +p;
+      } catch (e) {
+        currentPrice += 0;
+      }
     }
     this.totalPrice = currentPrice;
   }
@@ -42,7 +45,7 @@ export class FavoriteListComponent implements OnInit {
       }
     });
     this.sService.isClear.subscribe(data => {
-      console.log(data);
+      // console.log(data);
     });
   }
 
