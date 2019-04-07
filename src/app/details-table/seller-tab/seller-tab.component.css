@@ -65,3 +65,8 @@
 #store-anchor {
   color: #61878b;
 }
+
+.alert-warning {
+  margin-top: 20px;
+  text-align: center;
+}

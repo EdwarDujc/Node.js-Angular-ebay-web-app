@@ -40,3 +40,8 @@ img {
 .remove-cart-icon {
   color: darkgoldenrod;
 }
+
+.alert-warning {
+  margin-top: 20px;
+  text-align: center;
+}

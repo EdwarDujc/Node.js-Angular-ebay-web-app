@@ -75,9 +75,9 @@ export class DetailsTableComponent implements OnInit {
           tmpJson['title'] = 'N.A.';
           tmpJson['full_title'] = 'N.A.';
         }
-        tmpJson['price'] = '$'+this.product['Item']['CurrentPrice']['Value'];
+        tmpJson['price'] = '$' + this.product['Item']['CurrentPrice']['Value'];
         tmpJson['seller'] = this.product['Item']['Seller']['UserID'];
-        tmpJson['shipping'] = '666';
+        tmpJson['shipping'] = this.shipping['shippingInfo']['shippingCost'];
         this.fService.addCart(tmpJson);
         this.isInCart = true;
       }

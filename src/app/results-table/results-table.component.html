@@ -54,7 +54,7 @@
   </table>
 </div>
 <div class="pagination_buttons" *ngIf="resultJson">
-  <button class="btn btn-light" id="button_prev" (click)="goPreviousPage()">
+  <button class="btn btn-light" id="button_prev" (click)="goPreviousPage()" [disabled]="currentPage == 1">
     <!--    <i class="material-icons">keyboard_arrow_left</i>-->
 <!--    <i class="material-icons">navigate_before</i>-->
     &laquo; Previous
@@ -62,7 +62,7 @@
   <span *ngFor="let i of pageIndexArray">
     <button [class]=buttonIndexClass[i-1] (click)="goToPage(i)">{{i}}</button>
   </span>
-  <button class="btn btn-light" id="button_nxt" (click)="goNextPage()">
+  <button class="btn btn-light" id="button_nxt" (click)="goNextPage()" [disabled]="currentPage == totalPage">
     Next &raquo;
 <!--    <i class="material-icons" style="font-size: 15px">navigate_next</i>-->
 <!--    <i class="material-icons" style="font-size: 15px">navigate_next</i>-->

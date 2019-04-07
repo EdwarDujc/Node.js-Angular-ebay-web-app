@@ -10,3 +10,8 @@
 .clear-icon {
   color: red;
 }
+
+.alert-warning {
+  margin-top: 20px;
+  text-align: center;
+}

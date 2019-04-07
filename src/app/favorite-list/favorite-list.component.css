@@ -4,8 +4,9 @@ i {
 }
 
 .right {
-  float: right;
-  margin-bottom: 20px;
+  /*float: right;*/
+  /*margin-bottom: 20px;*/
+  text-align: right;
 }
 
 .remove-cart-icon {
@@ -23,4 +24,15 @@ i {
 img {
   width: 120px;
   height: 120px;
+}
+
+.alert-warning {
+  /*margin-top: 20px;*/
+  text-align: center;
+}
+
+#container-div {
+  overflow: scroll;
+  margin: auto;
+  margin-top: 20px;
 }

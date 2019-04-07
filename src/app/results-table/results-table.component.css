@@ -4,6 +4,7 @@ img {
 }
 
 #results-div {
+  margin: auto;
   margin-top: 20px;
 }
 
@@ -48,4 +49,9 @@ i {
 
 .remove-cart-icon {
   color: darkgoldenrod;
+}
+
+.alert-warning {
+  margin-top: 20px;
+  text-align: center;
 }

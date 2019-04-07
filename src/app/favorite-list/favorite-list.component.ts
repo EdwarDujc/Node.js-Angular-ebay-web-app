@@ -15,6 +15,17 @@ export class FavoriteListComponent implements OnInit {
   inCartItems: any;
   detailButtonEnabled = false;
   showCart = false;
+  totalPrice = 0;
+
+  sumPrice() {
+    let currentPrice = 0;
+    for (const item of this.inCartItems) {
+      const p = item['price'].slice(1);
+      console.log('price: ', p);
+      currentPrice += +p;
+    }
+    this.totalPrice = currentPrice;
+  }
 
   constructor(
     private fService: FavoriteService,
@@ -23,10 +34,10 @@ export class FavoriteListComponent implements OnInit {
   ) {
     this.fService.wishList.subscribe(data => {
       this.inCartItems = data;
+      this.sumPrice();
       if (this.inCartItems.length > 0) {
         this.showCart = true;
-      }
-      else {
+      } else {
         this.showCart = false;
       }
     });
@@ -38,6 +49,7 @@ export class FavoriteListComponent implements OnInit {
   removeCart(item) {
     // console.log('item to remove: ', item);
     this.fService.removeCart(item['itemId']);
+    this.sumPrice();
   }
 
   goDetailsPage() {

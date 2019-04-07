@@ -2,3 +2,8 @@ img {
   border: 8px solid black;
   margin: 5px;
 }
+
+.alert-warning {
+  margin-top: 20px;
+  text-align: center;
+}

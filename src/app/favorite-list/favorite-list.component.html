@@ -3,50 +3,56 @@
     Detail<i class="material-icons">navigate_next</i>
   </button>
 </div>
+<div id="container-div">
+  <div class="alert alert-warning" role="alert" *ngIf="!showCart">
+    No Records.
+  </div>
+  <div id="cart-div" *ngIf="showCart" class="table-responsive">
+    <table id="results-div-table" class="table table-hover table-secondary table-dark table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Shipping</th>
+        <th scope="col">Seller</th>
+        <th scope="col">Wish List</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of inCartItems; let i = index;" [class.table-secondary]="item['itemId']==selectedId">
+        <!--      <tr *ngFor="let item of inCartItems; let i = index;">-->
+        <th scope="row">{{i+1}}</th>
 
-<div class="alert alert-warning" role="alert" *ngIf="!showCart">
-  No Records.
-</div>
-<div id="cart-div" *ngIf="showCart" class="table-responsive">
-  <table id="results-div-table" class="table table-hover table-secondary table-dark table-striped">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Image</th>
-      <th scope="col">Title</th>
-      <th scope="col">Price</th>
-      <th scope="col">Shipping</th>
-      <th scope="col">Seller</th>
-      <th scope="col">Wish List</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let item of inCartItems; let i = index;" [class.table-secondary]="item['itemId']==selectedId">
-<!--      <tr *ngFor="let item of inCartItems; let i = index;">-->
-      <th scope="row">{{i+1}}</th>
-
-      <td>
-        <a href="{{item['image']}}" target="_blank">
-          <img src="{{item['image']}}" alt="icon" class="category-cion">
-        </a>
-<!--        <img src="{{item['image']}}" alt="icon" class="category-cion">-->
-      </td>
-      <td>
-        <div matTooltip="{{item['full_title']}}" matTooltipPosition="below" class="title-div">
-          <a role="button" (click)="getDetails(item)">{{item['title']}}</a>
-        </div>
-      </td>
-      <td>{{item['price']}}</td>
-      <td>{{item['shipping']}}</td>
-      <td>{{item['seller']}}</td>
-      <td>
-        <button type="button" class="btn btn-outline" (click)="removeCart(item)">
-          <i class="material-icons remove-cart-icon">
-            remove_shopping_cart
-          </i>
-        </button>
-      </td>
-    <tr>
-    </tbody>
-  </table>
+        <td>
+          <a href="{{item['image']}}" target="_blank">
+            <img src="{{item['image']}}" alt="icon" class="category-cion">
+          </a>
+          <!--        <img src="{{item['image']}}" alt="icon" class="category-cion">-->
+        </td>
+        <td>
+          <div matTooltip="{{item['full_title']}}" matTooltipPosition="below" class="title-div">
+            <a role="button" (click)="getDetails(item)">{{item['title']}}</a>
+          </div>
+        </td>
+        <td>{{item['price']}}</td>
+        <td>{{item['shipping']}}</td>
+        <td>{{item['seller']}}</td>
+        <td>
+          <button type="button" class="btn btn-outline" (click)="removeCart(item)">
+            <i class="material-icons remove-cart-icon">
+              remove_shopping_cart
+            </i>
+          </button>
+        </td>
+      <tr>
+      <tr>
+        <td colspan="5"></td>
+        <td>Total Shopping</td>
+        <td>${{totalPrice}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
