@@ -52,7 +52,7 @@ export class ResultsTableComponent implements OnInit {
       } else { // normally display results table
         const totalItems = +data['findItemsAdvancedResponse'][0]['searchResult'][0]['@count'];
         // console.log('data items count: ', totalItems);
-        this.totalPage = totalItems / 10;
+        this.totalPage = Math.ceil(totalItems / 10);
         // console.log('totalPage: ', this.totalPage);
         this.error = false;
         this.showResult = true;

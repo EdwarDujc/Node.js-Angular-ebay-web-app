@@ -4,7 +4,6 @@ var request = require("request");
 // var FrontUrl = "http://localhost:4200";
 var FrontUrl = "http://csci571-jincheng-nodejs.us-east-2.elasticbeanstalk.com:8081";
 
-var detailsPhotoArray;
 var app = express();
 
 app.get("/search", function(req, res) {
@@ -86,11 +85,11 @@ app.get("/search", function(req, res) {
     //store info
     url += "&outputSelector(1)=StoreInfo";
 
-    console.log(url);
+    // console.log(url);
 
     request(url, function (error, response, body) {
       if (!error && response.statusCode === 200) {
-        console.log(body);
+        // console.log(body);
         res.send(body);
       }
     });
