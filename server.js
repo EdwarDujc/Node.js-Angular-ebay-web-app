@@ -3,17 +3,8 @@ var request = require("request");
 var fs = require("fs");
 
 var FrontUrl = "http://localhost:4200";
+// var FrontUrl = "http://csci571-jincheng-nodejs.us-east-2.elasticbeanstalk.com:8081";
 
-fs.readdir("static/", function(err, files) {
-   if (err) {
-    fs.mkdir("static/", function(err) {
-         if (err) {
-             return console.error(err);
-         }
-         console.log("dir success");
-     });
-   }
-});
 var detailsPhotoArray;
 var app = express();
 
@@ -142,7 +133,7 @@ app.get("/photos", function(req, res) {
 
   request(url, function (error, response, body) {
     if (!error && response.statusCode === 200) {
-      console.log(body);
+      // console.log(body);
       res.send(body);
     }
   });
