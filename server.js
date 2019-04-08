@@ -1,9 +1,8 @@
 var express = require("express");
 var request = require("request");
-var fs = require("fs");
 
-var FrontUrl = "http://localhost:4200";
-// var FrontUrl = "http://csci571-jincheng-nodejs.us-east-2.elasticbeanstalk.com:8081";
+// var FrontUrl = "http://localhost:4200";
+var FrontUrl = "http://csci571-jincheng-nodejs.us-east-2.elasticbeanstalk.com:8081";
 
 var detailsPhotoArray;
 var app = express();
@@ -87,11 +86,11 @@ app.get("/search", function(req, res) {
     //store info
     url += "&outputSelector(1)=StoreInfo";
 
-    // console.log(url);
+    console.log(url);
 
     request(url, function (error, response, body) {
       if (!error && response.statusCode === 200) {
-        //console.log(body);
+        console.log(body);
         res.send(body);
       }
     });
@@ -179,7 +178,7 @@ app.get("/zipcode", function(req, res) {
   });
 });
 
-app.use(express.static("dist"));
+app.use(express.static("csci571-hw8"));
 
 var server = app.listen(8081, function() {
 

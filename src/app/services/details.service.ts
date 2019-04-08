@@ -8,8 +8,8 @@ import { ProcessingBarService} from '../processing-bar/processing-bar.service';
 })
 export class DetailsService {
 
-  private url = 'http://localhost:8081';
-  // private url = 'http://csci571-jincheng-nodejs.us-east-2.elasticbeanstalk.com:8081';
+  // private url = 'http://localhost:8081';
+  private url = '';
 
   private subDetails = new Subject();
   details = this.subDetails.asObservable();
