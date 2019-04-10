@@ -17,9 +17,10 @@
       <tbody>
         <tr *ngFor="let item of items | orderBy: OrderKey : reverse | filter:filter; let i = index">
           <td *ngIf="i < showLimit">
-            <a href="{{item['image']}}" target="_blank">
+            <a href="{{item['image']}}" target="_blank" *ngIf="item['image']!=''">
               <img src="{{item['image']}}" alt="icon" class="category-cion">
             </a>
+            <div *ngIf="item['image']===''">N.A.</div>
           </td>
           <td *ngIf="i < showLimit">
             <a class="title-anchor" role="button" (click)="openTab(item['viewItemURL'])">

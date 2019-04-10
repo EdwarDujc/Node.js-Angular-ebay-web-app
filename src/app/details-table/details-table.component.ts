@@ -58,7 +58,11 @@ export class DetailsTableComponent implements OnInit {
       } else {
         let tmpJson = {};
         tmpJson['itemId'] = this.product['Item']['ItemID'];
-        tmpJson['image'] = this.product['Item']['GalleryURL'];
+        try{
+          tmpJson['image'] = this.product['Item']['PictureURL'][0];
+        } catch (e) {
+          tmpJson['image'] = '';
+        }
         try {
           tmpJson['full_title'] = this.product['Item']['Title'];
           let tmpTitle = tmpJson['full_title'];

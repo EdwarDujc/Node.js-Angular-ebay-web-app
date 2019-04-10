@@ -10,8 +10,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class ProductTabComponent implements OnChanges {
   @Input() product: {};
 
-  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
-
   modalRef: BsModalRef;
 
   constructor(private modalService: BsModalService) {}

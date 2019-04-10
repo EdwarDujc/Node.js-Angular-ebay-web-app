@@ -1,8 +1,8 @@
 var express = require("express");
 var request = require("request");
 
-// var FrontUrl = "http://localhost:4200";
-var FrontUrl = "http://csci571-jincheng-nodejs.us-east-2.elasticbeanstalk.com:8081";
+var FrontUrl = "http://localhost:4200";
+// var FrontUrl = "http://csci571-jincheng-nodejs.us-east-2.elasticbeanstalk.com:8081";
 
 var app = express();
 

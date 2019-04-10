@@ -25,6 +25,9 @@
 /*round-progress {*/
 /*  margin: auto;*/
 /*}*/
+.None {
+  color: white;
+}
 
 .Yellow, .YellowShooting {
   color: yellow;
@@ -64,6 +67,10 @@
 
 #store-anchor {
   color: #61878b;
+}
+
+#store-anchor:hover {
+  text-decoration: underline;
 }
 
 .alert-warning {

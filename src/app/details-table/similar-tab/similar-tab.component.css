@@ -4,6 +4,10 @@
   margin-bottom: -5px;
 }
 
+.p-title:hover {
+  text-decoration: underline;
+}
+
 .p-price {
  color: #829a7f;
   margin-top: -5px;

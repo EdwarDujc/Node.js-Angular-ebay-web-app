@@ -26,10 +26,12 @@
         <th scope="row">{{i+1}}</th>
 
         <td>
-          <a href="{{item['image']}}" target="_blank">
+          <a href="{{item['image']}}" target="_blank" *ngIf="item['image']!=''">
             <img src="{{item['image']}}" alt="icon" class="category-cion">
           </a>
-          <!--        <img src="{{item['image']}}" alt="icon" class="category-cion">-->
+          <div *ngIf="item['image']===''">
+            N.A.
+          </div>
         </td>
         <td>
           <div matTooltip="{{item['full_title']}}" matTooltipPosition="below" class="title-div">

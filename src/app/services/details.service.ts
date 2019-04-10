@@ -152,7 +152,7 @@ export class DetailsService {
         tmpJson['useStarBorder'] = false;
       } else if (feedbackScoreInt >= 0 && feedbackScoreInt < 9) {
         tmpJson['useStars'] = false;
-        tmpJson['useStarBorder'] = false;
+        tmpJson['useStarBorder'] = true;
       } else {
         tmpJson['useStars'] = false;
         tmpJson['useStarBorder'] = true;
