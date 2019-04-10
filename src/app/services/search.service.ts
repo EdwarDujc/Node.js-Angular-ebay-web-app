@@ -59,7 +59,7 @@ export class SearchService {
       .set('userZipcode', form.userZipcode);
 
     this.pService.setShowProgress(true);
-    this.pService.setProgress(75);
+    this.pService.setProgress(50);
 
     const response = this.http.get(this.url + '/search', { params });
     response.subscribe(

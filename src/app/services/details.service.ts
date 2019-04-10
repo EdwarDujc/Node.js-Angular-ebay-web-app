@@ -48,7 +48,7 @@ export class DetailsService {
       .set('itemId', itemId);
 
     this.pService.setShowProgress(true);
-    this.pService.setProgress(75);
+    this.pService.setProgress(50);
 
     const response = this.http.get(this.url + '/details', { params });
     response.subscribe(
