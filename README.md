@@ -1,27 +1,36 @@
-# Csci571Hw8
+# USC CSCI571 Web Technologies HW8
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+## Introduction
+- A serverless web app that allows users to search ebay products.
+- Implemeted in Angualr 7 & NodeJS v11.10.0
+- Generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+- Backend hosted on AWS Elastic Beanstalk
+- [Link](http://csci571-jincheng-nodejs.us-east-2.elasticbeanstalk.com/)
 
-## Development server
+## Features
+### Search Form
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/search-form.gif)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Detail - Product
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/Product-tab.gif)
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/Product-tab-2.gif)
 
-## Code scaffolding
+### Detail - Photos
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/Photos-tab.gif)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Detail - Shipping
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/Shipping-tab.jpeg)
 
-## Build
+### Detail - Seller
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/Seller-tab.gif)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Detail - Similar Products
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/similar-tab-1.gif)
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/similar-tab-2.gif)
 
-## Running unit tests
+### Facebook Sharing
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/facebook.gif)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Wish List
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/wish-list-1.gif)
+![](https://github.com/EdwarDujc/nodejs-angular-ebay/blob/master/screenshots/wish-list-2.gif)
