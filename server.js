@@ -1,8 +1,8 @@
 var express = require("express");
 var request = require("request");
 
-var FrontUrl = "http://localhost:4200";
-// var FrontUrl = "http://csci571-jincheng-nodejs.us-east-2.elasticbeanstalk.com:8081";
+// var FrontUrl = "http://localhost:4200";
+var FrontUrl = "http://csci571-jincheng-nodejs.us-east-2.elasticbeanstalk.com:8081";
 
 var app = express();
 
@@ -13,7 +13,7 @@ app.get("/search", function(req, res) {
     res.setHeader("Access-Control-Allow-Origin", FrontUrl);
     // console.log(req.query);
 
-    var url = "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=Jincheng-USCCSCI5-PRD-916e2f5cf-2683f609&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=50";
+    var url = "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=APPNAME&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=50";
     var filterId = 0;
     //keyword
     url += "&keywords=" + req.query.keyword;
@@ -102,7 +102,7 @@ app.get("/details", function(req, res) {
   res.setHeader("Access-Control-Allow-Origin", FrontUrl);
   // console.log(req.query);
 
-  var url = "http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON&appid=Jincheng-USCCSCI5-PRD-916e2f5cf-2683f609&siteid=0&version=967&ItemID=";
+  var url = "http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON&appid=APPID&siteid=0&version=967&ItemID=";
   url += req.query.itemId;
   url += "&IncludeSelector=Description,Details,ItemSpecifics";
 
@@ -124,11 +124,9 @@ app.get("/photos", function(req, res) {
 
   var url = "https://www.googleapis.com/customsearch/v1?q=";
   url += req.query.keyword;
-  url += "&cx=017030067582812733545:tk2vekergf8&imgSize=huge&imgType=news&num=8&searchType=image&key=AIzaSyClpgG450XgRvNOkY_mdNIc5W0MJgXxlLo";
+  url += "&cx=017030067582812733545:tk2vekergf8&imgSize=huge&imgType=news&num=8&searchType=image&key=APIKEY";
 
   // console.log(url);
-  // url = "www.amazon.com";
-
   request(url, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       // console.log(body);
@@ -143,7 +141,7 @@ app.get("/similar", function(req, res) {
   res.setHeader("Access-Control-Allow-Origin", FrontUrl);
   // console.log(req.query);
 
-  var url = "http://svcs.ebay.com/MerchandisingService?OPERATION-NAME=getSimilarItems&SERVICE-NAME=MerchandisingService&SERVICE-VERSION=1.1.0&CONSUMER-ID=Jincheng-USCCSCI5-PRD-916e2f5cf-2683f609&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&itemId=";
+  var url = "http://svcs.ebay.com/MerchandisingService?OPERATION-NAME=getSimilarItems&SERVICE-NAME=MerchandisingService&SERVICE-VERSION=1.1.0&CONSUMER-ID=CONSUMERID&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&itemId=";
   url += req.query.itemId;
   url += "&maxResults=20";
 
@@ -165,7 +163,7 @@ app.get("/zipcode", function(req, res) {
 
   var url = 'http://api.geonames.org/postalCodeSearchJSON?postalcode_startsWith=';
   url += req.query.zipcode;
-  url += "&username=edwardcsci571&country=US&maxRows=5";
+  url += "&username=USERNAME&country=US&maxRows=5";
 
   // console.log(url);
 
